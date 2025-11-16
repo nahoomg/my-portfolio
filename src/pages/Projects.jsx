@@ -159,22 +159,40 @@ const Projects = () => {
       </section>
 
       <section className="py-10 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-6xl mx-auto relative">
           <motion.div
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="space-y-10"
+            className="space-y-10 relative"
           >
+            {/* Connecting Line - Vertical line in the middle */}
+            <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-0.5 -translate-x-1/2 z-0">
+              <div className="absolute inset-0 bg-gradient-to-b from-emerald-600/20 via-emerald-500/30 to-emerald-600/20"></div>
+              <div className="absolute inset-0 bg-gradient-to-b from-transparent via-emerald-400/10 to-transparent" style={{ animation: 'pulse 3s ease-in-out infinite' }}></div>
+            </div>
+
             {projects.map((project, index) => (
               <motion.div
                 key={project.id}
                 variants={itemVariants}
                 className={`flex flex-col ${
                   index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'
-                } gap-6 items-center`}
+                } gap-6 items-center relative z-10`}
               >
+                {/* Connection Node */}
+                <div className="hidden lg:block absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20">
+                  <motion.div
+                    initial={{ scale: 0, opacity: 0 }}
+                    whileInView={{ scale: 1, opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.2, duration: 0.4 }}
+                    className="w-5 h-5 rounded-full bg-emerald-600 dark:bg-emerald-400 border-4 border-white dark:border-dark-bg shadow-xl"
+                  >
+                    <div className="absolute inset-0 rounded-full bg-emerald-400/30 animate-ping"></div>
+                  </motion.div>
+                </div>
                 <div className="w-full lg:w-1/2">
                   <motion.div
                     whileHover={{ scale: 1.02 }}
@@ -185,11 +203,12 @@ const Projects = () => {
                         src={project.image}
                         alt={project.title}
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                        loading="lazy"
                         onError={(e) => {
                           e.target.style.display = 'none';
                         }}
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent pointer-events-none"></div>
                     </div>
 
                     <div className="absolute top-4 left-4">

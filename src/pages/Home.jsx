@@ -19,7 +19,7 @@ const Home = () => {
       id: 1,
       title: 'AI YouTube Automation Platform',
       description: 'Full-stack web application automating YouTube video creation using AI - from topic research to final video assembly with Gemini AI and Stability AI.',
-      image: '/images/ai-youtube-automation.jpg',
+      image: '/images/ai-youtube-automation.png',
       tags: ['Next.js', 'AI', 'Gemini', 'Stability AI', 'Automation'],
       status: 'In Progress',
     },
@@ -27,7 +27,7 @@ const Home = () => {
       id: 2,
       title: 'CineReview - Movie Review Platform',
       description: 'A full-stack movie review platform where users can discover movies, read reviews, and share their thoughts. Built with Django REST Framework and React.',
-      image: '/images/cinereview.png',
+      image: '/images/movie-review.png',
       tags: ['Django', 'DRF', 'React', 'Vite', 'Tailwind CSS'],
       status: 'Completed',
     },
@@ -170,11 +170,12 @@ const Home = () => {
                     src={project.image}
                     alt={project.title}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                    loading="lazy"
                     onError={(e) => {
                       e.target.style.display = 'none';
                     }}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent pointer-events-none"></div>
                   <div className="absolute top-4 right-4">
                     <span className={`px-3 py-1 rounded-full text-xs font-semibold ${
                       project.status === 'Completed'
