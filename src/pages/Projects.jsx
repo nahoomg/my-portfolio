@@ -63,7 +63,7 @@ const Projects = () => {
         'Modern Next.js dashboard with shadcn/ui components',
       ],
       github: 'https://github.com/nahoomg/youtube-automation-script.git',
-      demo: 'https://youtube-automation-script.vercel.app/',
+      demo: 'https://lightube.vercel.app',
       youtubeVideo: '',
     },
     {
@@ -88,7 +88,7 @@ const Projects = () => {
         'Responsive design for all devices',
       ],
       github: 'https://github.com/nahoomg/movie-review-api.git',
-      demo: '#',
+      demo: 'https://movie-review-api-omega.vercel.app/',
       youtubeVideo: '',
     },
     {
@@ -241,7 +241,7 @@ const Projects = () => {
                     {project.tags.map((tag, idx) => (
                       <span
                         key={idx}
-                        className="px-2 py-1 text-xs rounded-full bg-gray-100 dark:bg-dark-card text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-dark-border"
+                        className="px-2 py-1 text-xs rounded-full bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 border border-gray-200 dark:border-gray-600"
                       >
                         {tag}
                       </span>
@@ -255,7 +255,7 @@ const Projects = () => {
                       rel="noopener noreferrer"
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                      className="flex items-center space-x-2 px-5 py-2.5 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-lg font-semibold hover:shadow-lg transition-all text-sm"
+                      className="flex items-center space-x-2 px-5 py-2.5 bg-gray-800 dark:bg-gray-700 text-white rounded-lg font-semibold hover:bg-gray-700 dark:hover:bg-gray-600 hover:shadow-lg transition-all text-sm"
                     >
                       <FaGithub />
                       <span>View Code</span>
