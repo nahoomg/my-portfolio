@@ -106,13 +106,13 @@ const Contact = () => {
 
   return (
     <div className="min-h-screen">
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-emerald-600/5 to-emerald-400/5 dark:from-emerald-600/3 dark:to-emerald-400/3">
+      <section className="py-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-emerald-600/5 to-emerald-400/5 dark:from-emerald-600/3 dark:to-emerald-400/3">
         <div className="max-w-7xl mx-auto text-center">
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-5xl md:text-6xl font-display font-bold mb-6"
+            className="text-3xl md:text-4xl font-display font-bold mb-4"
           >
             Get In <span className="text-gradient">Touch</span>
           </motion.h1>
@@ -120,16 +120,16 @@ const Contact = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto"
+            className="text-base text-gray-600 dark:text-gray-400 max-w-2xl mx-auto"
           >
             Let's build something innovative together. Reach out for collaborations, academic projects, or creative tech ideas.
           </motion.p>
         </div>
       </section>
 
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
+      <section className="py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -137,7 +137,7 @@ const Contact = () => {
               transition={{ duration: 0.6 }}
             >
               <div className="bg-white dark:bg-dark-card rounded-2xl p-8 shadow-xl border border-gray-200 dark:border-dark-border">
-                <h2 className="text-3xl font-display font-bold mb-6 text-gray-900 dark:text-white">
+                <h2 className="text-2xl font-display font-bold mb-4 text-gray-900 dark:text-white">
                   Send a Message
                 </h2>
 
@@ -246,10 +246,10 @@ const Contact = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="space-y-8"
+              className="space-y-6"
             >
               <div>
-                <h2 className="text-3xl font-display font-bold mb-6 text-gray-900 dark:text-white">
+                <h2 className="text-2xl font-display font-bold mb-4 text-gray-900 dark:text-white">
                   Contact Information
                 </h2>
                 <motion.div
@@ -284,7 +284,7 @@ const Contact = () => {
               </div>
 
               <div>
-                <h2 className="text-3xl font-display font-bold mb-6 text-gray-900 dark:text-white">
+                <h2 className="text-2xl font-display font-bold mb-4 text-gray-900 dark:text-white">
                   Connect on Social Media
                 </h2>
                 <div className="grid grid-cols-2 gap-4">
@@ -316,10 +316,10 @@ const Contact = () => {
                 transition={{ duration: 0.6, delay: 0.3 }}
                 className="p-8 rounded-2xl bg-emerald-50 dark:bg-emerald-900/10 border border-emerald-600/20"
               >
-                <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">
+                <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-white">
                   Let's Create Something Amazing!
                 </h3>
-                <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
                   Whether you have a project in mind, need collaboration on an academic endeavor, 
                   or just want to discuss innovative ideas in AI and software development, I'd love to hear from you. 
                   Let's connect and explore how we can work together to build meaningful solutions.

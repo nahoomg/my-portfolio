@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { FaGithub, FaLinkedin, FaEnvelope, FaHeart } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -31,7 +31,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="space-y-4">
             <h3 className="text-2xl font-display font-bold text-gradient">
-              Portfolio
+              Nahom Getachew
             </h3>
             <p className="text-gray-600 dark:text-gray-400">
               Information Science Student passionate about AI-driven automation and practical software development.
@@ -126,9 +126,6 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <p className="text-gray-600 dark:text-gray-400 text-sm">
               © {currentYear} All rights reserved.
-            </p>
-            <p className="text-gray-600 dark:text-gray-400 text-sm flex items-center">
-              Built with <FaHeart className="mx-1 text-red-500" /> using React & Tailwind CSS
             </p>
           </div>
         </div>

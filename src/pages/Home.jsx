@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { FaArrowRight, FaRocket, FaCode, FaBrain } from 'react-icons/fa';
+import { FaArrowRight } from 'react-icons/fa';
 
 const scrollToSection = (sectionId) => {
   const element = document.getElementById(sectionId);
@@ -64,7 +64,7 @@ const Home = () => {
 
   return (
     <div className="min-h-screen">
-      <section className="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+      <section className="relative pt-24 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
         <div className="absolute inset-0 -z-10">
           <div className="absolute inset-0 bg-gradient-to-br from-emerald-600/5 to-emerald-400/5 dark:from-emerald-600/3 dark:to-emerald-400/3"></div>
           <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-600/10 rounded-full blur-3xl animate-float"></div>
@@ -81,7 +81,7 @@ const Home = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-5xl md:text-7xl font-display font-bold mb-6"
+              className="text-4xl md:text-6xl font-display font-bold mb-4"
             >
               <span className="text-gradient">Nahom Getachew</span>
             </motion.h1>
@@ -90,7 +90,7 @@ const Home = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 mb-8 font-medium"
+              className="text-lg md:text-xl text-gray-700 dark:text-gray-300 mb-6 font-medium"
             >
               Information Science Student | AI Automation Enthusiast | Full-Stack Developer
             </motion.p>
@@ -99,7 +99,7 @@ const Home = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mb-12 leading-relaxed"
+              className="text-base text-gray-600 dark:text-gray-400 max-w-3xl mb-8 leading-relaxed"
             >
               A third-year Information Science student passionate about building practical, AI-integrated solutions. 
               I focus on creating automated workflows and developing apps that solve real-world problems — from 
@@ -134,56 +134,19 @@ const Home = () => {
         </div>
       </section>
 
-      <section className="py-12 bg-gray-50 dark:bg-dark-card/50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-3 gap-8"
-          >
-            <motion.div
-              variants={itemVariants}
-              className="text-center p-6 rounded-xl bg-white dark:bg-dark-card border border-gray-200 dark:border-dark-border"
-            >
-              <FaBrain className="text-4xl text-emerald-600 mx-auto mb-4" />
-              <h3 className="text-3xl font-bold text-gradient mb-2">AI-Driven</h3>
-              <p className="text-gray-600 dark:text-gray-400">Automation Solutions</p>
-            </motion.div>
-            <motion.div
-              variants={itemVariants}
-              className="text-center p-6 rounded-xl bg-white dark:bg-dark-card border border-gray-200 dark:border-dark-border"
-            >
-              <FaCode className="text-4xl text-emerald-600 mx-auto mb-4" />
-              <h3 className="text-3xl font-bold text-gradient mb-2">Full-Stack</h3>
-              <p className="text-gray-600 dark:text-gray-400">Development Skills</p>
-            </motion.div>
-            <motion.div
-              variants={itemVariants}
-              className="text-center p-6 rounded-xl bg-white dark:bg-dark-card border border-gray-200 dark:border-dark-border"
-            >
-              <FaRocket className="text-4xl text-emerald-600 mx-auto mb-4" />
-              <h3 className="text-3xl font-bold text-gradient mb-2">Innovation</h3>
-              <p className="text-gray-600 dark:text-gray-400">Focused Mindset</p>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
+      <section className="py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-16"
+            className="text-center mb-10"
           >
-            <h2 className="text-4xl md:text-5xl font-display font-bold mb-4">
+            <h2 className="text-3xl md:text-4xl font-display font-bold mb-3">
               Featured <span className="text-gradient">Projects</span>
             </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+            <p className="text-base text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
               Explore some of my recent work in AI automation, mobile development, and full-stack solutions.
             </p>
           </motion.div>
@@ -193,7 +156,7 @@ const Home = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
           >
             {featuredProjects.map((project) => (
               <motion.div
@@ -260,7 +223,7 @@ const Home = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-center mt-12"
+            className="text-center mt-8"
           >
             <motion.button
               onClick={() => scrollToSection('projects')}

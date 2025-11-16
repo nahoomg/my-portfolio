@@ -91,13 +91,13 @@ const Projects = () => {
 
   return (
     <div className="min-h-screen">
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-emerald-600/5 to-emerald-400/5 dark:from-emerald-600/3 dark:to-emerald-400/3">
+      <section className="py-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-emerald-600/5 to-emerald-400/5 dark:from-emerald-600/3 dark:to-emerald-400/3">
         <div className="max-w-7xl mx-auto text-center">
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-5xl md:text-6xl font-display font-bold mb-6"
+            className="text-3xl md:text-4xl font-display font-bold mb-4"
           >
             My <span className="text-gradient">Projects</span>
           </motion.h1>
@@ -105,21 +105,21 @@ const Projects = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto"
+            className="text-base text-gray-600 dark:text-gray-400 max-w-2xl mx-auto"
           >
             A showcase of my work in AI automation, mobile development, and innovative solutions
           </motion.p>
         </div>
       </section>
 
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
+      <section className="py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <motion.div
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="space-y-16"
+            className="space-y-12"
           >
             {projects.map((project, index) => (
               <motion.div
@@ -132,7 +132,7 @@ const Projects = () => {
                 <div className="w-full lg:w-1/2">
                   <motion.div
                     whileHover={{ scale: 1.02 }}
-                    className="relative rounded-2xl overflow-hidden shadow-2xl group"
+                    className={`relative rounded-2xl overflow-hidden shadow-2xl group ${project.id === 1 ? '-mt-8' : ''}`}
                   >
                     <div className="aspect-video bg-gradient-to-br from-emerald-600/20 to-emerald-400/20 relative">
                       <img
@@ -161,21 +161,21 @@ const Projects = () => {
 
                 <div className="w-full lg:w-1/2 space-y-6">
                   <div>
-                    <h2 className="text-3xl md:text-4xl font-display font-bold mb-3 text-gray-900 dark:text-white">
+                    <h2 className="text-2xl md:text-3xl font-display font-bold mb-3 text-gray-900 dark:text-white">
                       {project.title}
                     </h2>
-                    <div className="flex items-center space-x-2 text-gray-600 dark:text-gray-400 mb-4">
+                    <div className="flex items-center space-x-2 text-gray-600 dark:text-gray-400 mb-3">
                       <FaCalendar />
                       <span>{project.date}</span>
                     </div>
                   </div>
 
-                  <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+                  <p className="text-base text-gray-700 dark:text-gray-300 leading-relaxed">
                     {project.longDescription}
                   </p>
 
                   <div>
-                    <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-white">
+                    <h3 className="text-lg font-bold mb-2 text-gray-900 dark:text-white">
                       Key Features
                     </h3>
                     <ul className="space-y-2">
@@ -233,41 +233,6 @@ const Projects = () => {
         </div>
       </section>
 
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-emerald-600/5 to-emerald-400/5 dark:from-emerald-600/3 dark:to-emerald-400/3">
-        <div className="max-w-4xl mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <h2 className="text-3xl md:text-4xl font-display font-bold mb-6">
-              Interested in <span className="text-gradient">Collaborating?</span>
-            </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-400 mb-8">
-              I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
-            </p>
-            <motion.button
-              onClick={() => {
-                const element = document.getElementById('contact');
-                if (element) {
-                  const offset = 80;
-                  const elementPosition = element.offsetTop - offset;
-                  window.scrollTo({
-                    top: elementPosition,
-                    behavior: 'smooth',
-                  });
-                }
-              }}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="inline-block px-8 py-4 bg-gradient-accent text-white rounded-lg font-semibold shadow-lg hover:shadow-2xl transition-all"
-            >
-              Get In Touch
-            </motion.button>
-          </motion.div>
-        </div>
-      </section>
     </div>
   );
 };
