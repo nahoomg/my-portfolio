@@ -75,13 +75,13 @@ const Contact = () => {
 
   return (
     <div className="min-h-screen">
-      <section className="py-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-emerald-600/5 to-emerald-400/5 dark:from-emerald-600/3 dark:to-emerald-400/3">
-        <div className="max-w-7xl mx-auto text-center">
+      <section className="py-10 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-emerald-600/5 to-emerald-400/5 dark:from-emerald-600/3 dark:to-emerald-400/3">
+        <div className="max-w-6xl mx-auto text-center">
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-3xl md:text-4xl font-display font-bold mb-4"
+            className="text-2xl md:text-3xl font-display font-bold mb-3"
           >
             Get In <span className="text-gradient">Touch</span>
           </motion.h1>
@@ -89,28 +89,28 @@ const Contact = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-base text-gray-600 dark:text-gray-400 max-w-2xl mx-auto"
+            className="text-sm text-gray-600 dark:text-gray-400 max-w-xl mx-auto"
           >
             Let's build something innovative together. Reach out for collaborations, academic projects, or creative tech ideas.
           </motion.p>
         </div>
       </section>
 
-      <section className="py-12 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <section className="py-10 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <div className="bg-white dark:bg-dark-card rounded-2xl p-8 shadow-xl border border-gray-200 dark:border-dark-border">
-                <h2 className="text-2xl font-display font-bold mb-4 text-gray-900 dark:text-white">
+              <div className="bg-white dark:bg-dark-card rounded-2xl p-6 shadow-xl border border-gray-200 dark:border-dark-border">
+                <h2 className="text-xl font-display font-bold mb-3 text-gray-900 dark:text-white">
                   Send a Message
                 </h2>
 
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <form onSubmit={handleSubmit} className="space-y-4">
                   <div>
                     <label
                       htmlFor="name"
@@ -125,7 +125,7 @@ const Contact = () => {
                       value={formData.name}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-dark-border bg-white dark:bg-dark-bg text-gray-900 dark:text-white focus:ring-2 focus:ring-emerald-600 focus:border-transparent transition-all"
+                      className="w-full px-3 py-2 rounded-lg border border-gray-300 dark:border-dark-border bg-white dark:bg-dark-bg text-gray-900 dark:text-white focus:ring-2 focus:ring-emerald-600 focus:border-transparent transition-all text-sm"
                       placeholder="John Doe"
                     />
                   </div>
@@ -144,7 +144,7 @@ const Contact = () => {
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-dark-border bg-white dark:bg-dark-bg text-gray-900 dark:text-white focus:ring-2 focus:ring-emerald-600 focus:border-transparent transition-all"
+                      className="w-full px-3 py-2 rounded-lg border border-gray-300 dark:border-dark-border bg-white dark:bg-dark-bg text-gray-900 dark:text-white focus:ring-2 focus:ring-emerald-600 focus:border-transparent transition-all text-sm"
                       placeholder="john@example.com"
                     />
                   </div>
@@ -163,7 +163,7 @@ const Contact = () => {
                       value={formData.subject}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-dark-border bg-white dark:bg-dark-bg text-gray-900 dark:text-white focus:ring-2 focus:ring-emerald-600 focus:border-transparent transition-all"
+                      className="w-full px-3 py-2 rounded-lg border border-gray-300 dark:border-dark-border bg-white dark:bg-dark-bg text-gray-900 dark:text-white focus:ring-2 focus:ring-emerald-600 focus:border-transparent transition-all text-sm"
                       placeholder="Project Collaboration"
                     />
                   </div>
@@ -181,8 +181,8 @@ const Contact = () => {
                       value={formData.message}
                       onChange={handleChange}
                       required
-                      rows="6"
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-dark-border bg-white dark:bg-dark-bg text-gray-900 dark:text-white focus:ring-2 focus:ring-emerald-600 focus:border-transparent transition-all resize-none"
+                          rows="5"
+                          className="w-full px-3 py-2 rounded-lg border border-gray-300 dark:border-dark-border bg-white dark:bg-dark-bg text-gray-900 dark:text-white focus:ring-2 focus:ring-emerald-600 focus:border-transparent transition-all resize-none text-sm"
                       placeholder="Tell me about your project or idea..."
                     ></textarea>
                   </div>
@@ -201,7 +201,7 @@ const Contact = () => {
                     type="submit"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    className="w-full px-8 py-4 bg-gradient-accent text-white rounded-lg font-semibold shadow-lg hover:shadow-2xl transition-all flex items-center justify-center space-x-2"
+                        className="w-full px-6 py-3 bg-gradient-accent text-white rounded-lg font-semibold shadow-lg hover:shadow-2xl transition-all flex items-center justify-center space-x-2 text-sm"
                   >
                     <span>Send Message</span>
                     <FaPaperPlane />
@@ -215,10 +215,10 @@ const Contact = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="space-y-6"
+              className="space-y-5"
             >
               <div>
-                <h2 className="text-2xl font-display font-bold mb-4 text-gray-900 dark:text-white">
+                <h2 className="text-xl font-display font-bold mb-3 text-gray-900 dark:text-white">
                   Contact Information
                 </h2>
                 <motion.div
@@ -253,7 +253,7 @@ const Contact = () => {
               </div>
 
               <div>
-                <h2 className="text-2xl font-display font-bold mb-4 text-gray-900 dark:text-white">
+                <h2 className="text-xl font-display font-bold mb-3 text-gray-900 dark:text-white">
                   Connect on Social Media
                 </h2>
                 <div className="grid grid-cols-2 gap-4">
@@ -286,12 +286,12 @@ const Contact = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.3 }}
-                className="p-8 rounded-2xl bg-emerald-50 dark:bg-emerald-900/10 border border-emerald-600/20"
+                className="p-6 rounded-2xl bg-emerald-50 dark:bg-emerald-900/10 border border-emerald-600/20"
               >
-                <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-white">
+                <h3 className="text-lg font-bold mb-2 text-gray-900 dark:text-white">
                   Let's Create Something Amazing!
                 </h3>
-                <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                <p className="text-xs text-gray-700 dark:text-gray-300 leading-relaxed">
                   Whether you have a project in mind, need collaboration on an academic endeavor, 
                   or just want to discuss innovative ideas in AI and software development, I'd love to hear from you. 
                   Let's connect and explore how we can work together to build meaningful solutions.

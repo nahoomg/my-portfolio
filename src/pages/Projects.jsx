@@ -137,13 +137,13 @@ const Projects = () => {
 
   return (
     <div className="min-h-screen">
-      <section className="py-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-emerald-600/5 to-emerald-400/5 dark:from-emerald-600/3 dark:to-emerald-400/3">
-        <div className="max-w-7xl mx-auto text-center">
+      <section className="py-10 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-emerald-600/5 to-emerald-400/5 dark:from-emerald-600/3 dark:to-emerald-400/3">
+        <div className="max-w-6xl mx-auto text-center">
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-3xl md:text-4xl font-display font-bold mb-4"
+            className="text-2xl md:text-3xl font-display font-bold mb-3"
           >
             My <span className="text-gradient">Projects</span>
           </motion.h1>
@@ -151,21 +151,21 @@ const Projects = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-base text-gray-600 dark:text-gray-400 max-w-2xl mx-auto"
+            className="text-sm text-gray-600 dark:text-gray-400 max-w-xl mx-auto"
           >
             A showcase of my work in AI automation, mobile development, and innovative solutions
           </motion.p>
         </div>
       </section>
 
-      <section className="py-12 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
+      <section className="py-10 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto">
           <motion.div
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="space-y-12"
+            className="space-y-10"
           >
             {projects.map((project, index) => (
               <motion.div
@@ -173,7 +173,7 @@ const Projects = () => {
                 variants={itemVariants}
                 className={`flex flex-col ${
                   index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'
-                } gap-8 items-center`}
+                } gap-6 items-center`}
               >
                 <div className="w-full lg:w-1/2">
                   <motion.div
@@ -205,23 +205,23 @@ const Projects = () => {
                   </motion.div>
                 </div>
 
-                <div className="w-full lg:w-1/2 space-y-6">
+                <div className="w-full lg:w-1/2 space-y-4">
                   <div>
-                    <h2 className="text-2xl md:text-3xl font-display font-bold mb-3 text-gray-900 dark:text-white">
+                    <h2 className="text-xl md:text-2xl font-display font-bold mb-2 text-gray-900 dark:text-white">
                       {project.title}
                     </h2>
-                    <div className="flex items-center space-x-2 text-gray-600 dark:text-gray-400 mb-3">
+                    <div className="flex items-center space-x-2 text-gray-600 dark:text-gray-400 mb-2 text-sm">
                       <FaCalendar />
                       <span>{project.date}</span>
                     </div>
                   </div>
 
-                  <p className="text-base text-gray-700 dark:text-gray-300 leading-relaxed">
+                  <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
                     {project.longDescription}
                   </p>
 
                   <div>
-                    <h3 className="text-lg font-bold mb-2 text-gray-900 dark:text-white">
+                    <h3 className="text-base font-bold mb-2 text-gray-900 dark:text-white">
                       Key Features
                     </h3>
                     <ul className="space-y-2">
@@ -241,21 +241,21 @@ const Projects = () => {
                     {project.tags.map((tag, idx) => (
                       <span
                         key={idx}
-                        className="px-3 py-1 text-sm rounded-full bg-gray-100 dark:bg-dark-card text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-dark-border"
+                        className="px-2 py-1 text-xs rounded-full bg-gray-100 dark:bg-dark-card text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-dark-border"
                       >
                         {tag}
                       </span>
                     ))}
                   </div>
 
-                  <div className="flex flex-wrap gap-4 pt-4">
+                  <div className="flex flex-wrap gap-3 pt-3">
                     <motion.a
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                      className="flex items-center space-x-2 px-6 py-3 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-lg font-semibold hover:shadow-lg transition-all"
+                      className="flex items-center space-x-2 px-5 py-2.5 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-lg font-semibold hover:shadow-lg transition-all text-sm"
                     >
                       <FaGithub />
                       <span>View Code</span>
@@ -266,7 +266,7 @@ const Projects = () => {
                       rel="noopener noreferrer"
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                      className="flex items-center space-x-2 px-6 py-3 border-2 border-emerald-600 text-emerald-600 dark:text-emerald-400 dark:border-emerald-400 rounded-lg font-semibold hover:bg-emerald-600 hover:text-white transition-all"
+                      className="flex items-center space-x-2 px-5 py-2.5 border-2 border-emerald-600 text-emerald-600 dark:text-emerald-400 dark:border-emerald-400 rounded-lg font-semibold hover:bg-emerald-600 hover:text-white transition-all text-sm"
                     >
                       <FaExternalLinkAlt />
                       <span>Live Demo</span>
@@ -276,7 +276,7 @@ const Projects = () => {
                       disabled={!project.youtubeVideo}
                       whileHover={project.youtubeVideo ? { scale: 1.05 } : {}}
                       whileTap={project.youtubeVideo ? { scale: 0.95 } : {}}
-                      className={`flex items-center space-x-2 px-6 py-3 rounded-lg font-semibold transition-all shadow-lg ${
+                      className={`flex items-center space-x-2 px-5 py-2.5 rounded-lg font-semibold transition-all shadow-lg text-sm ${
                         project.youtubeVideo
                           ? 'bg-red-600 text-white hover:bg-red-700 hover:shadow-xl cursor-pointer'
                           : 'bg-gray-400 dark:bg-gray-600 text-white cursor-not-allowed opacity-75'

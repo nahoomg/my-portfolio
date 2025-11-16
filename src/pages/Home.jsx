@@ -81,7 +81,7 @@ const Home = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-4xl md:text-6xl font-display font-bold mb-4"
+              className="text-3xl md:text-5xl font-display font-bold mb-3"
             >
               <span className="text-gradient">Nahom Getachew</span>
             </motion.h1>
@@ -90,7 +90,7 @@ const Home = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="text-lg md:text-xl text-gray-700 dark:text-gray-300 mb-6 font-medium"
+              className="text-base md:text-lg text-gray-700 dark:text-gray-300 mb-4 font-medium"
             >
               Information Science Student | AI Automation Enthusiast | Full-Stack Developer
             </motion.p>
@@ -99,7 +99,7 @@ const Home = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-base text-gray-600 dark:text-gray-400 max-w-3xl mb-8 leading-relaxed"
+              className="text-sm text-gray-600 dark:text-gray-400 max-w-2xl mb-6 leading-relaxed"
             >
               A third-year Information Science student passionate about building practical, AI-integrated solutions. 
               I focus on creating automated workflows and developing apps that solve real-world problems — from 
@@ -116,7 +116,7 @@ const Home = () => {
                 onClick={() => scrollToSection('projects')}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="group px-8 py-4 bg-gradient-accent text-white rounded-lg font-semibold shadow-lg hover:shadow-2xl transition-all flex items-center justify-center space-x-2"
+                  className="group px-6 py-3 bg-gradient-accent text-white rounded-lg font-semibold shadow-lg hover:shadow-2xl transition-all flex items-center justify-center space-x-2 text-sm"
               >
                 <span>View My Projects</span>
                 <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
@@ -125,7 +125,7 @@ const Home = () => {
                 onClick={() => scrollToSection('contact')}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 bg-transparent border-2 border-emerald-600 text-emerald-600 dark:text-emerald-400 dark:border-emerald-400 rounded-lg font-semibold hover:bg-emerald-600 hover:text-white transition-all"
+                className="px-6 py-3 bg-transparent border-2 border-emerald-600 text-emerald-600 dark:text-emerald-400 dark:border-emerald-400 rounded-lg font-semibold hover:bg-emerald-600 hover:text-white transition-all text-sm"
               >
                 Contact Me
               </motion.button>
@@ -134,19 +134,19 @@ const Home = () => {
         </div>
       </section>
 
-      <section className="py-12 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
+      <section className="py-10 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-10"
+            className="text-center mb-8"
           >
-            <h2 className="text-3xl md:text-4xl font-display font-bold mb-3">
+            <h2 className="text-2xl md:text-3xl font-display font-bold mb-2">
               Featured <span className="text-gradient">Projects</span>
             </h2>
-            <p className="text-base text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+            <p className="text-sm text-gray-600 dark:text-gray-400 max-w-xl mx-auto">
               Explore some of my recent work in AI automation, mobile development, and full-stack solutions.
             </p>
           </motion.div>
@@ -156,7 +156,7 @@ const Home = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
           >
             {featuredProjects.map((project) => (
               <motion.div
@@ -223,7 +223,7 @@ const Home = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-center mt-8"
+            className="text-center mt-6"
           >
             <motion.button
               onClick={() => scrollToSection('projects')}

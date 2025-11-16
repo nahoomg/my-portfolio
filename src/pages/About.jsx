@@ -74,13 +74,13 @@ const About = () => {
 
   return (
     <div className="min-h-screen">
-      <section className="py-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-emerald-600/5 to-emerald-400/5 dark:from-emerald-600/3 dark:to-emerald-400/3">
-        <div className="max-w-4xl mx-auto text-center">
+      <section className="py-10 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-emerald-600/5 to-emerald-400/5 dark:from-emerald-600/3 dark:to-emerald-400/3">
+        <div className="max-w-3xl mx-auto text-center">
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-3xl md:text-4xl font-display font-bold mb-4"
+            className="text-2xl md:text-3xl font-display font-bold mb-3"
           >
             About <span className="text-gradient">Me</span>
           </motion.h1>
@@ -88,7 +88,7 @@ const About = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-base text-gray-600 dark:text-gray-400 max-w-2xl mx-auto"
+            className="text-sm text-gray-600 dark:text-gray-400 max-w-xl mx-auto"
           >
             Passionate about leveraging technology to create meaningful solutions
           </motion.p>
@@ -102,12 +102,12 @@ const About = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="mb-10"
+            className="mb-8"
           >
-            <h2 className="text-2xl md:text-3xl font-display font-bold mb-6">
+            <h2 className="text-xl md:text-2xl font-display font-bold mb-4">
               My <span className="text-gradient">Journey</span>
             </h2>
-            <div className="space-y-4 text-base text-gray-700 dark:text-gray-300 leading-relaxed">
+            <div className="space-y-3 text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
               <p>
                 My journey into Information Science began with a curiosity about how technology shapes 
                 the way we access, process, and share information. As a third-year student, I've developed 
@@ -129,24 +129,24 @@ const About = () => {
         </div>
       </section>
 
-      <section className="py-12 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-dark-card/50">
-        <div className="max-w-7xl mx-auto">
+      <section className="py-10 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-dark-card/50">
+        <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-10"
+            className="text-center mb-8"
           >
-            <h2 className="text-2xl md:text-3xl font-display font-bold mb-3">
+            <h2 className="text-xl md:text-2xl font-display font-bold mb-2">
               Technical <span className="text-gradient">Skills</span>
             </h2>
-            <p className="text-base text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+            <p className="text-sm text-gray-600 dark:text-gray-400 max-w-xl mx-auto">
               A diverse toolkit for building modern, AI-integrated applications
             </p>
           </motion.div>
 
-          <div className="space-y-8">
+          <div className="space-y-6">
             {Object.entries(skills).map(([category, items]) => (
               <motion.div
                 key={category}
@@ -155,7 +155,7 @@ const About = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
               >
-                <h3 className="text-xl font-bold mb-4 text-gray-900 dark:text-white">
+                <h3 className="text-lg font-bold mb-3 text-gray-900 dark:text-white">
                   {category}
                 </h3>
                 <motion.div
@@ -163,16 +163,16 @@ const About = () => {
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: true }}
-                  className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4"
+                  className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3"
                 >
                   {items.map((skill, index) => (
                     <motion.div
                       key={index}
                       variants={itemVariants}
                       whileHover={{ scale: 1.05, y: -5 }}
-                      className="flex flex-col items-center p-4 rounded-xl bg-white dark:bg-dark-card border border-gray-200 dark:border-dark-border hover:border-emerald-600 dark:hover:border-emerald-400 transition-all shadow-md hover:shadow-xl"
+                      className="flex flex-col items-center p-3 rounded-xl bg-white dark:bg-dark-card border border-gray-200 dark:border-dark-border hover:border-emerald-600 dark:hover:border-emerald-400 transition-all shadow-md hover:shadow-xl"
                     >
-                      <div className={`text-4xl mb-2 ${skill.color}`}>
+                      <div className={`text-3xl mb-1 ${skill.color}`}>
                         {skill.icon}
                       </div>
                       <span className="text-xs font-medium text-center text-gray-700 dark:text-gray-300">
@@ -187,14 +187,14 @@ const About = () => {
         </div>
       </section>
 
-      <section className="py-12 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto">
+      <section className="py-10 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-3xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="relative p-6 md:p-8 rounded-2xl overflow-hidden"
+            className="relative p-5 md:p-6 rounded-2xl overflow-hidden"
           >
             <div className="absolute inset-0 bg-gradient-to-br from-teal-50 via-cyan-50 to-blue-50 dark:from-teal-900/10 dark:via-cyan-900/10 dark:to-blue-900/10"></div>
             <div className="absolute inset-0 opacity-10 dark:opacity-5" style={{
@@ -202,10 +202,10 @@ const About = () => {
             }}></div>
 
             <div className="relative z-10">
-              <h2 className="text-2xl md:text-3xl font-display font-bold mb-4">
+              <h2 className="text-xl md:text-2xl font-display font-bold mb-3">
                 Beyond the Code: <span className="text-gradient">Video Editing</span>
               </h2>
-              <div className="space-y-3 text-base text-gray-700 dark:text-gray-300 leading-relaxed">
+              <div className="space-y-2 text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
                 <p>
                   Beyond my technical work in software development, I'm also a passionate video editor. 
                   I believe that compelling visual storytelling is just as important as writing clean code, 
