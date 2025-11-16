@@ -64,24 +64,25 @@ const Home = () => {
 
   return (
     <div className="min-h-screen">
-      <section className="relative pt-24 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
+      <section className="relative h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 overflow-hidden">
         <div className="absolute inset-0 -z-10">
           <div className="absolute inset-0 bg-gradient-to-br from-emerald-600/5 to-emerald-400/5 dark:from-emerald-600/3 dark:to-emerald-400/3"></div>
           <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-600/10 rounded-full blur-3xl animate-float"></div>
           <div className="absolute bottom-0 left-0 w-96 h-96 bg-emerald-400/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }}></div>
         </div>
 
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-7xl w-full mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
+            className="w-full"
           >
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-3xl md:text-5xl font-display font-bold mb-3"
+              className="text-4xl md:text-6xl lg:text-7xl font-display font-bold mb-4"
             >
               <span className="text-gradient">Nahom Getachew</span>
             </motion.h1>
@@ -90,7 +91,7 @@ const Home = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="text-base md:text-lg text-gray-700 dark:text-gray-300 mb-4 font-medium"
+              className="text-lg md:text-xl lg:text-2xl text-gray-700 dark:text-gray-300 mb-6 font-medium"
             >
               Information Science Student | AI Automation Enthusiast | Full-Stack Developer
             </motion.p>
@@ -99,7 +100,7 @@ const Home = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-sm text-gray-600 dark:text-gray-400 max-w-2xl mb-6 leading-relaxed"
+              className="text-base md:text-lg text-gray-600 dark:text-gray-400 max-w-3xl mb-8 leading-relaxed"
             >
               A third-year Information Science student passionate about building practical, AI-integrated solutions. 
               I focus on creating automated workflows and developing apps that solve real-world problems — from 
@@ -116,7 +117,7 @@ const Home = () => {
                 onClick={() => scrollToSection('projects')}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                  className="group px-6 py-3 bg-gradient-accent text-white rounded-lg font-semibold shadow-lg hover:shadow-2xl transition-all flex items-center justify-center space-x-2 text-sm"
+                  className="group px-8 py-4 bg-gradient-accent text-white rounded-lg font-semibold shadow-lg hover:shadow-2xl transition-all flex items-center justify-center space-x-2 text-base"
               >
                 <span>View My Projects</span>
                 <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
@@ -125,7 +126,7 @@ const Home = () => {
                 onClick={() => scrollToSection('contact')}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-6 py-3 bg-transparent border-2 border-emerald-600 text-emerald-600 dark:text-emerald-400 dark:border-emerald-400 rounded-lg font-semibold hover:bg-emerald-600 hover:text-white transition-all text-sm"
+                className="px-8 py-4 bg-transparent border-2 border-emerald-600 text-emerald-600 dark:text-emerald-400 dark:border-emerald-400 rounded-lg font-semibold hover:bg-emerald-600 hover:text-white transition-all text-base"
               >
                 Contact Me
               </motion.button>
