@@ -1,7 +1,46 @@
-import { motion } from 'framer-motion';
-import { FaGithub, FaExternalLinkAlt, FaCalendar, FaCheckCircle, FaClock } from 'react-icons/fa';
+import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { FaGithub, FaExternalLinkAlt, FaCalendar, FaCheckCircle, FaClock, FaPlay, FaTimes } from 'react-icons/fa';
 
 const Projects = () => {
+  const [selectedVideo, setSelectedVideo] = useState(null);
+
+  const getYouTubeEmbedUrl = (url) => {
+    if (!url) return null;
+    const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+    const match = url.match(regExp);
+    const videoId = (match && match[2].length === 11) ? match[2] : null;
+    return videoId ? `https://www.youtube.com/embed/${videoId}` : null;
+  };
+
+  const openVideoModal = (videoUrl) => {
+    if (videoUrl) {
+      setSelectedVideo(videoUrl);
+    }
+  };
+
+  const closeVideoModal = () => {
+    setSelectedVideo(null);
+  };
+
+  useEffect(() => {
+    const handleEscape = (e) => {
+      if (e.key === 'Escape') {
+        setSelectedVideo(null);
+      }
+    };
+
+    if (selectedVideo) {
+      document.addEventListener('keydown', handleEscape);
+      document.body.style.overflow = 'hidden';
+    }
+
+    return () => {
+      document.removeEventListener('keydown', handleEscape);
+      document.body.style.overflow = 'unset';
+    };
+  }, [selectedVideo]);
+
   const projects = [
     {
       id: 1,
@@ -11,7 +50,7 @@ const Projects = () => {
       date: 'December 2025 - Present',
       description: 'A cutting-edge, full-stack web application designed to automate the entire YouTube video creation pipeline using advanced AI models. From topic research to final video assembly.',
       longDescription: 'This platform empowers content creators to generate high-quality, engaging videos with minimal manual effort. It features multi-channel project management, AI-powered content generation using Google\'s Gemini models for topic research, scriptwriting, and production planning. Integrates Stability AI for visual asset creation including thumbnails and scene-by-scene images. Utilizes Gemini\'s Text-to-Speech for natural voiceovers and FFmpeg for automated video assembly. Built with Next.js (TypeScript, Tailwind CSS, shadcn/ui) and Firestore for robust backend storage.',
-      image: '/images/ai-youtube-automation.jpg',
+      image: '/images/ai-youtube-automation.png',
       tags: ['Next.js', 'TypeScript', 'Gemini AI', 'Stability AI', 'FFmpeg', 'Firestore', 'Automation'],
       features: [
         'Multi-channel project management with customizable settings',
@@ -23,28 +62,34 @@ const Projects = () => {
         'Real-time job tracking with downloadable assets',
         'Modern Next.js dashboard with shadcn/ui components',
       ],
-      github: '#',
-      demo: '#',
+      github: 'https://github.com/nahoomg/youtube-automation-script.git',
+      demo: 'https://youtube-automation-script.vercel.app/',
+      youtubeVideo: '',
     },
     {
       id: 2,
-      title: 'AI Study Assistant for Ethiopian Students',
-      status: 'In Progress',
-      statusColor: 'bg-yellow-500',
-      date: 'November 2025 - Present',
-      description: 'A Flutter-based mobile app concept integrating AI to support Ethiopian students academically. Features include personalized learning aids, instant explanations, and accessible digital resources tailored to the Ethiopian curriculum and learning environment.',
-      longDescription: 'This project aims to bridge the educational technology gap in Ethiopia by providing students with an AI-powered mobile assistant. The app will offer features like instant homework help, subject-specific tutoring, exam preparation tools, and curated learning resources. Built with Flutter for cross-platform compatibility and integrating modern AI capabilities to provide intelligent, context-aware educational support.',
-      image: '/images/ai-studyapp.png',
-      tags: ['Flutter', 'AI', 'EdTech', 'Mobile App', 'UI/UX', 'In-Progress'],
+      title: 'CineReview - Movie Review Platform',
+      status: 'Completed',
+      statusColor: 'bg-green-500',
+      date: '2024',
+      description: 'A full-stack movie review platform where users can discover movies, read reviews, and share their thoughts. Built with Django REST Framework and React, featuring authentication, image uploads, and a responsive UI.',
+      longDescription: 'CineReview is a full-stack web application that enables movie enthusiasts to explore films, write reviews, and manage their review history. The platform features token-based authentication, movie browsing with search and genre filters, a comprehensive review system with ratings and comments, user profiles with avatar uploads, and a responsive design with modern UI/UX.',
+      image: '/images/movie-review.png',
+      tags: ['Django', 'Django REST Framework', 'React', 'Vite', 'Tailwind CSS', 'SQLite', 'Full-Stack'],
       features: [
-        'Personalized learning recommendations',
-        'AI-powered instant explanations',
-        'Interactive study materials',
-        'Progress tracking and analytics',
-        'Offline functionality for accessibility',
+        'RESTful API with Django REST Framework',
+        'React frontend with Context API for state management',
+        'Token-based authentication system',
+        'Movie browsing with search and genre filters',
+        'Review system with ratings and comments',
+        'User profiles with avatar uploads',
+        'Image upload and management',
+        'Protected routes and secure authentication',
+        'Responsive design for all devices',
       ],
-      github: '#',
+      github: 'https://github.com/nahoomg/movie-review-api.git',
       demo: '#',
+      youtubeVideo: '',
     },
     {
       id: 3,
@@ -65,6 +110,7 @@ const Projects = () => {
       ],
       github: '#',
       demo: '#',
+      youtubeVideo: '',
     },
   ];
 
@@ -225,6 +271,20 @@ const Projects = () => {
                       <FaExternalLinkAlt />
                       <span>Live Demo</span>
                     </motion.a>
+                    <motion.button
+                      onClick={() => project.youtubeVideo ? openVideoModal(project.youtubeVideo) : null}
+                      disabled={!project.youtubeVideo}
+                      whileHover={project.youtubeVideo ? { scale: 1.05 } : {}}
+                      whileTap={project.youtubeVideo ? { scale: 0.95 } : {}}
+                      className={`flex items-center space-x-2 px-6 py-3 rounded-lg font-semibold transition-all shadow-lg ${
+                        project.youtubeVideo
+                          ? 'bg-red-600 text-white hover:bg-red-700 hover:shadow-xl cursor-pointer'
+                          : 'bg-gray-400 dark:bg-gray-600 text-white cursor-not-allowed opacity-75'
+                      }`}
+                    >
+                      <FaPlay />
+                      <span>{project.youtubeVideo ? 'Watch Demo' : 'Demo video will be added soon'}</span>
+                    </motion.button>
                   </div>
                 </div>
               </motion.div>
@@ -233,6 +293,49 @@ const Projects = () => {
         </div>
       </section>
 
+      <AnimatePresence>
+        {selectedVideo && (
+          <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={closeVideoModal}
+              className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+            >
+              <motion.div
+                initial={{ scale: 0.8, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.8, opacity: 0 }}
+                onClick={(e) => e.stopPropagation()}
+                className="relative w-full max-w-4xl bg-white dark:bg-dark-card rounded-2xl overflow-hidden shadow-2xl"
+              >
+                <button
+                  onClick={closeVideoModal}
+                  className="absolute top-4 right-4 z-10 p-2 bg-black/50 hover:bg-black/70 text-white rounded-full transition-colors"
+                  aria-label="Close video"
+                >
+                  <FaTimes className="w-5 h-5" />
+                </button>
+                <div className="aspect-video">
+                  {getYouTubeEmbedUrl(selectedVideo) ? (
+                    <iframe
+                      src={getYouTubeEmbedUrl(selectedVideo)}
+                      title="YouTube video player"
+                      frameBorder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                      className="w-full h-full"
+                    />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center bg-gray-900 text-white">
+                      <p>Invalid YouTube URL</p>
+                    </div>
+                  )}
+                </div>
+              </motion.div>
+            </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };

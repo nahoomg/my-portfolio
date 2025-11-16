@@ -25,11 +25,11 @@ const Home = () => {
     },
     {
       id: 2,
-      title: 'AI Study Assistant',
-      description: 'A Flutter-based mobile app integrating AI to support Ethiopian students academically with personalized learning aids.',
-      image: '/images/ai-studyapp.png',
-      tags: ['Flutter', 'AI', 'EdTech', 'Mobile App'],
-      status: 'In Progress',
+      title: 'CineReview - Movie Review Platform',
+      description: 'A full-stack movie review platform where users can discover movies, read reviews, and share their thoughts. Built with Django REST Framework and React.',
+      image: '/images/cinereview.png',
+      tags: ['Django', 'DRF', 'React', 'Vite', 'Tailwind CSS'],
+      status: 'Completed',
     },
     {
       id: 3,
