@@ -1,29 +1,9 @@
 import { motion } from 'framer-motion';
-import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
+import { getSocialLinks } from '../config/socialLinks';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-
-  const socialLinks = [
-    {
-      name: 'GitHub',
-      icon: <FaGithub />,
-      url: 'https://github.com/yourusername',
-      color: 'hover:text-gray-900 dark:hover:text-white',
-    },
-    {
-      name: 'LinkedIn',
-      icon: <FaLinkedin />,
-      url: 'https://linkedin.com/in/yourusername',
-      color: 'hover:text-blue-600',
-    },
-    {
-      name: 'Email',
-      icon: <FaEnvelope />,
-      url: 'mailto:nahomgetachewmy@gmail.com',
-      color: 'hover:text-emerald-600',
-    },
-  ];
+  const socialLinks = getSocialLinks().filter(link => ['GitHub', 'LinkedIn', 'Email'].includes(link.name));
 
   return (
     <footer className="bg-gray-50 dark:bg-dark-card border-t border-gray-200 dark:border-dark-border">
@@ -115,7 +95,10 @@ const Footer = () => {
                   className={`text-2xl text-gray-600 dark:text-gray-400 transition-colors ${social.color}`}
                   aria-label={social.name}
                 >
-                  {social.icon}
+                  {social.icon && (() => {
+                    const IconComponent = social.icon;
+                    return <IconComponent />;
+                  })()}
                 </motion.a>
               ))}
             </div>

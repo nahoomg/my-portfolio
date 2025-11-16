@@ -1,13 +1,11 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { 
-  FaGithub, 
-  FaLinkedin, 
   FaEnvelope, 
   FaMapMarkerAlt,
   FaPaperPlane,
-  FaTwitter,
 } from 'react-icons/fa';
+import { getSocialLinks } from '../config/socialLinks';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -52,36 +50,7 @@ const Contact = () => {
     },
   ];
 
-  const socialLinks = [
-    {
-      name: 'GitHub',
-      icon: <FaGithub />,
-      url: 'https://github.com/yourusername',
-      color: 'hover:text-gray-900 dark:hover:text-white',
-      bgColor: 'hover:bg-gray-900 dark:hover:bg-white',
-    },
-    {
-      name: 'LinkedIn',
-      icon: <FaLinkedin />,
-      url: 'https://linkedin.com/in/yourusername',
-      color: 'hover:text-blue-600',
-      bgColor: 'hover:bg-blue-600',
-    },
-    {
-      name: 'Twitter',
-      icon: <FaTwitter />,
-      url: 'https://twitter.com/yourusername',
-      color: 'hover:text-blue-400',
-      bgColor: 'hover:bg-blue-400',
-    },
-    {
-      name: 'Email',
-      icon: <FaEnvelope />,
-      url: 'mailto:nahomgetachewmy@gmail.com',
-      color: 'hover:text-emerald-600',
-      bgColor: 'hover:bg-emerald-600',
-    },
-  ];
+  const socialLinks = getSocialLinks();
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -299,7 +268,10 @@ const Contact = () => {
                       className={`flex flex-col items-center justify-center p-6 rounded-xl bg-white dark:bg-dark-card border border-gray-200 dark:border-dark-border ${social.color} hover:text-white transition-all group`}
                     >
                       <div className={`text-4xl mb-2 ${social.color} group-hover:text-white transition-colors`}>
-                        {social.icon}
+                        {social.icon && (() => {
+                          const IconComponent = social.icon;
+                          return <IconComponent />;
+                        })()}
                       </div>
                       <span className="font-semibold text-gray-900 dark:text-white group-hover:text-white">
                         {social.name}
