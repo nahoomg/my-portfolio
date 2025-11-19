@@ -16,7 +16,7 @@ export const socialLinksData = [
   },
   {
     name: 'LinkedIn',
-    url: 'https://linkedin.com/in/yourusername',
+    url: 'https://www.linkedin.com/in/nahom-getachew-07613030a',
     color: 'hover:text-blue-600',
     bgColor: 'hover:bg-blue-600',
   },
