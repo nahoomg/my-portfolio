@@ -304,8 +304,99 @@ const Contact = () => {
               transition={{ duration: 0.6 }}
               className="space-y-5"
             >
-              {/* (unchanged UI code) */}
-              {/* ... */}
+              <div>
+                <h2 className="text-xl font-display font-bold mb-3 text-gray-900 dark:text-white">
+                  Contact Information
+                </h2>
+                <motion.div
+                  variants={containerVariants}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                  className="space-y-4"
+                >
+                  {contactInfo.map((info, index) => (
+                    <motion.div
+                      key={index}
+                      variants={itemVariants}
+                      whileHover={{ x: 5 }}
+                      className="flex items-center justify-between p-4 rounded-xl bg-white dark:bg-dark-card border border-gray-200 dark:border-dark-border hover:border-emerald-600 dark:hover:border-emerald-400 transition-all group"
+                    >
+                      <div className="flex items-center space-x-4 flex-1">
+                        <div className={`text-3xl ${info.color}`}>
+                          {info.icon}
+                        </div>
+                        <div>
+                          <h3 className="font-semibold text-gray-900 dark:text-white">
+                            {info.title}
+                          </h3>
+                          <p className="text-gray-600 dark:text-gray-400">
+                            {info.value}
+                          </p>
+                        </div>
+                      </div>
+                      {info.link.startsWith('mailto:') && (
+                        <button
+                          onClick={(e) => {
+                            e.preventDefault();
+                            copyToClipboard(info.value);
+                          }}
+                          className="p-2 rounded-lg bg-gray-100 dark:bg-gray-700 hover:bg-emerald-100 dark:hover:bg-emerald-900/30 text-gray-700 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-emerald-400 transition-all opacity-0 group-hover:opacity-100 border border-gray-200 dark:border-gray-600"
+                          title="Copy to clipboard"
+                        >
+                          <FaCopy />
+                        </button>
+                      )}
+                    </motion.div>
+                  ))}
+                </motion.div>
+              </div>
+
+              <div>
+                <h2 className="text-xl font-display font-bold mb-3 text-gray-900 dark:text-white">
+                  Connect on Social Media
+                </h2>
+                <div className="grid grid-cols-2 gap-4">
+                  {socialLinks.map((social, index) => (
+                    <motion.a
+                      key={index}
+                      href={social.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      whileHover={{ scale: 1.05, y: -5 }}
+                      whileTap={{ scale: 0.95 }}
+                      className={`flex flex-col items-center justify-center p-6 rounded-xl bg-white dark:bg-dark-card border border-gray-200 dark:border-dark-border ${social.color} hover:text-white transition-all group`}
+                    >
+                      <div className={`text-4xl mb-2 ${social.color} group-hover:text-white transition-colors`}>
+                        {social.icon && (() => {
+                          const IconComponent = social.icon;
+                          return <IconComponent />;
+                        })()}
+                      </div>
+                      <span className="font-semibold text-gray-900 dark:text-white group-hover:text-white">
+                        {social.name}
+                      </span>
+                    </motion.a>
+                  ))}
+                </div>
+              </div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                className="p-6 rounded-2xl bg-emerald-50 dark:bg-emerald-900/10 border border-emerald-600/20"
+              >
+                <h3 className="text-lg font-bold mb-2 text-gray-900 dark:text-white">
+                  Let's Create Something Amazing!
+                </h3>
+                <p className="text-xs text-gray-700 dark:text-gray-300 leading-relaxed">
+                  Whether you have a project in mind, need collaboration on an academic endeavor, 
+                  or just want to discuss innovative ideas in AI and software development, I'd love to hear from you. 
+                  Let's connect and explore how we can work together to build meaningful solutions.
+                </p>
+              </motion.div>
             </motion.div>
           </div>
         </div>
