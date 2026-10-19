@@ -2,6 +2,9 @@ import { motion } from 'framer-motion';
 import { FaArrowRight } from 'react-icons/fa';
 import LighTubePipeline from '../components/LighTubePipeline';
 
+// Placeholder avatar; swap for a real photo (e.g. '/images/nahom.webp').
+const PROFILE_IMAGE = '/images/avatar.svg';
+
 const scrollToSection = (sectionId) => {
   const element = document.getElementById(sectionId);
   if (element) {
@@ -79,6 +82,17 @@ const Home = () => {
             transition={{ duration: 0.8 }}
             className="w-full"
           >
+            <motion.img
+              src={PROFILE_IMAGE}
+              alt="Nahom Getachew"
+              width={112}
+              height={112}
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="w-24 h-24 md:w-28 md:h-28 rounded-full object-cover mb-6 ring-4 ring-emerald-600/30 dark:ring-emerald-400/30 shadow-lg"
+            />
+
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
