@@ -1,3 +1,6 @@
+const token = (name) => `rgb(var(--${name}) / <alpha-value>)`;
+
+/** @type {import('tailwindcss').Config} */
 export default {
   content: [
     "./index.html",
@@ -7,44 +10,23 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: {
-          50: '#e6f7ff',
-          100: '#bae7ff',
-          200: '#91d5ff',
-          300: '#69c0ff',
-          400: '#40a9ff',
-          500: '#1890ff',
-          600: '#096dd9',
-          700: '#0050b3',
-          800: '#003a8c',
-          900: '#002766',
-        },
-        accent: {
-          neon: '#10b981',
-          blue: '#10b981',
-          purple: '#10b981',
-        },
-        dark: {
-          bg: '#0a0e27',
-          card: '#1a1f3a',
-          border: '#2d3357',
-        }
+        // Monochrome system + one accent; values live in src/index.css.
+        paper: token('paper'),
+        ink: token('ink'),
+        muted: token('muted'),
+        surface: token('surface'),
+        accent: token('accent'),
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
-        display: ['Poppins', 'system-ui', 'sans-serif'],
+        sans: ['Geist', 'system-ui', 'sans-serif'],
+        display: ['Geist', 'system-ui', 'sans-serif'],
+        mono: ['"Geist Mono"', 'ui-monospace', 'monospace'],
+        serif: ['"Instrument Serif"', 'Georgia', 'serif'],
       },
-      animation: {
-        'float': 'float 6s ease-in-out infinite',
-      },
-      keyframes: {
-        float: {
-          '0%, 100%': { transform: 'translateY(0px)' },
-          '50%': { transform: 'translateY(-20px)' },
-        },
+      transitionTimingFunction: {
+        'out-expo': 'cubic-bezier(0.16, 1, 0.3, 1)',
       },
     },
   },
   plugins: [],
 }
-

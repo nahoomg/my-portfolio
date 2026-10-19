@@ -1,19 +1,17 @@
-import { motion } from 'framer-motion';
-import { 
-  FaPython, 
-  FaReact, 
+import {
+  FaPython,
+  FaReact,
   FaGitAlt,
-  FaDatabase,
   FaBrain,
   FaRobot,
   FaMobileAlt,
   FaPalette,
   FaNode,
 } from 'react-icons/fa';
-import { 
-  SiDart, 
-  SiFlutter, 
-  SiJavascript, 
+import {
+  SiDart,
+  SiFlutter,
+  SiJavascript,
   SiTelegram,
   SiNextdotjs,
   SiMongodb,
@@ -22,215 +20,123 @@ import {
   SiTailwindcss,
   SiTypescript,
 } from 'react-icons/si';
+import { Reveal, ScrollRevealText, SectionLabel } from '../components/fx';
 
-const About = () => {
-  const skills = {
-    'Languages & Frameworks': [
-      { name: 'Python', icon: <FaPython />, color: 'text-blue-500' },
-      { name: 'JavaScript', icon: <SiJavascript />, color: 'text-yellow-500' },
-      { name: 'TypeScript', icon: <SiTypescript />, color: 'text-blue-500' },
-      { name: 'React', icon: <FaReact />, color: 'text-cyan-500' },
-      { name: 'Next.js', icon: <SiNextdotjs />, color: 'text-gray-800 dark:text-white' },
-      { name: 'Node.js', icon: <FaNode />, color: 'text-green-600' },
-      { name: 'Flutter', icon: <SiFlutter />, color: 'text-blue-400' },
-      { name: 'Dart', icon: <SiDart />, color: 'text-blue-400' },
-      { name: 'Tailwind CSS', icon: <SiTailwindcss />, color: 'text-cyan-400' },
-    ],
-    'Databases & Backend': [
-      { name: 'MongoDB', icon: <SiMongodb />, color: 'text-green-500' },
-      { name: 'MySQL', icon: <SiMysql />, color: 'text-blue-600' },
-      { name: 'PostgreSQL', icon: <SiPostgresql />, color: 'text-blue-400' },
-      { name: 'Telegram Bot API', icon: <SiTelegram />, color: 'text-blue-500' },
-    ],
-    'Tools & Concepts': [
-      { name: 'Git', icon: <FaGitAlt />, color: 'text-orange-500' },
-      { name: 'AI/ML Concepts', icon: <FaBrain />, color: 'text-purple-500' },
-      { name: 'AI Automation', icon: <FaRobot />, color: 'text-emerald-600' },
-      { name: 'Mobile Development', icon: <FaMobileAlt />, color: 'text-emerald-600' },
-      { name: 'UI/UX Design', icon: <FaPalette />, color: 'text-emerald-600' },
-    ],
-  };
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.5,
-      },
-    },
-  };
-
-  return (
-    <div className="min-h-screen">
-      <section className="py-10 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-emerald-600/5 to-emerald-400/5 dark:from-emerald-600/3 dark:to-emerald-400/3">
-        <div className="max-w-3xl mx-auto text-center">
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-2xl md:text-3xl font-display font-bold mb-3"
-          >
-            About <span className="text-gradient">Me</span>
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-sm text-gray-600 dark:text-gray-400 max-w-xl mx-auto"
-          >
-            Passionate about leveraging technology to create meaningful solutions
-          </motion.p>
-        </div>
-      </section>
-
-      <section className="py-12 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="mb-8"
-          >
-            <h2 className="text-xl md:text-2xl font-display font-bold mb-4">
-              My <span className="text-gradient">Journey</span>
-            </h2>
-            <div className="space-y-3 text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
-              <p>
-                My journey into Information Science began with a curiosity about how technology shapes 
-                the way we access, process, and share information. As a third-year student, I've developed 
-                a deep fascination with the intersection of artificial intelligence and practical software development.
-              </p>
-              <p>
-                What started as an interest in understanding data and information systems has evolved into 
-                a passion for building AI-driven automation tools. I believe that the most impactful technology 
-                is the kind that solves real-world problems and makes complex tasks accessible to everyone.
-              </p>
-              <p>
-                Through hands-on projects, hackathons, and continuous learning, I've grown from understanding 
-                theoretical concepts to building functional applications that serve real users. Each project 
-                teaches me something new about problem-solving, user experience, and the power of well-designed systems.
-              </p>
-            </div>
-          </motion.div>
-
-        </div>
-      </section>
-
-      <section className="py-10 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-dark-card/50">
-        <div className="max-w-6xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-8"
-          >
-            <h2 className="text-xl md:text-2xl font-display font-bold mb-2">
-              Technical <span className="text-gradient">Skills</span>
-            </h2>
-            <p className="text-sm text-gray-600 dark:text-gray-400 max-w-xl mx-auto">
-              A diverse toolkit for building modern, AI-integrated applications
-            </p>
-          </motion.div>
-
-          <div className="space-y-6">
-            {Object.entries(skills).map(([category, items]) => (
-              <motion.div
-                key={category}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-              >
-                <h3 className="text-lg font-bold mb-3 text-gray-900 dark:text-white">
-                  {category}
-                </h3>
-                <motion.div
-                  variants={containerVariants}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true }}
-                  className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3"
-                >
-                  {items.map((skill, index) => (
-                    <motion.div
-                      key={index}
-                      variants={itemVariants}
-                      whileHover={{ scale: 1.05, y: -5 }}
-                      className="flex flex-col items-center p-3 rounded-xl bg-white dark:bg-dark-card border border-gray-200 dark:border-dark-border hover:border-emerald-600 dark:hover:border-emerald-400 transition-all shadow-md hover:shadow-xl"
-                    >
-                      <div className={`text-3xl mb-1 ${skill.color}`}>
-                        {skill.icon}
-                      </div>
-                      <span className="text-xs font-medium text-center text-gray-700 dark:text-gray-300">
-                        {skill.name}
-                      </span>
-                    </motion.div>
-                  ))}
-                </motion.div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="py-10 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-3xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="relative p-5 md:p-6 rounded-2xl overflow-hidden"
-          >
-            <div className="absolute inset-0 bg-gradient-to-br from-teal-50 via-cyan-50 to-blue-50 dark:from-teal-900/10 dark:via-cyan-900/10 dark:to-blue-900/10"></div>
-            <div className="absolute inset-0 opacity-10 dark:opacity-5" style={{
-              backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-            }}></div>
-
-            <div className="relative z-10">
-              <h2 className="text-xl md:text-2xl font-display font-bold mb-3">
-                Beyond the Code: <span className="text-gradient">Video Editing</span>
-              </h2>
-              <div className="space-y-2 text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
-                <p>
-                  Beyond my technical work in software development, I'm also a passionate video editor. 
-                  I believe that compelling visual storytelling is just as important as writing clean code, 
-                  and I enjoy bringing creative visions to life through video editing.
-                </p>
-                <p>
-                  From cutting and arranging footage to color grading and audio mixing, I love the entire 
-                  post-production process. Video editing allows me to combine my technical skills with 
-                  creative expression, whether it's crafting engaging content for social media, creating 
-                  educational videos, or producing promotional materials.
-                </p>
-                <p>
-                  This creative outlet complements my development work perfectly—both require attention to 
-                  detail, patience, and a commitment to delivering quality results. Whether I'm debugging 
-                  code or perfecting a transition, I approach each project with the same dedication and 
-                  passion for excellence.
-                </p>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-    </div>
-  );
+const SKILLS = {
+  'Languages & Frameworks': [
+    ['Python', FaPython],
+    ['JavaScript', SiJavascript],
+    ['TypeScript', SiTypescript],
+    ['React', FaReact],
+    ['Next.js', SiNextdotjs],
+    ['Node.js', FaNode],
+    ['Flutter', SiFlutter],
+    ['Dart', SiDart],
+    ['Tailwind CSS', SiTailwindcss],
+  ],
+  'Databases & Backend': [
+    ['MongoDB', SiMongodb],
+    ['MySQL', SiMysql],
+    ['PostgreSQL', SiPostgresql],
+    ['Telegram Bot API', SiTelegram],
+  ],
+  'Tools & Concepts': [
+    ['Git', FaGitAlt],
+    ['AI/ML Concepts', FaBrain],
+    ['AI Automation', FaRobot],
+    ['Mobile Development', FaMobileAlt],
+    ['UI/UX Design', FaPalette],
+  ],
 };
 
-export default About;
+const STATEMENT =
+  "I'm a third-year Information Science student fascinated by the intersection of *artificial* *intelligence* and practical software. I build automation tools that make complex tasks *accessible* to everyone.";
 
+const About = () => (
+  <div className="px-4 py-24 sm:px-6 md:py-36 lg:px-10">
+    <SectionLabel index="03">About</SectionLabel>
+
+    <h2 className="sr-only">About me</h2>
+    <ScrollRevealText
+      text={STATEMENT}
+      className="mt-14 max-w-6xl text-[2rem] font-medium leading-[1.12] tracking-[-0.03em] sm:text-5xl lg:text-[4.25rem]"
+    />
+
+    <div className="mt-24 grid gap-14 lg:grid-cols-12">
+      <Reveal className="lg:col-span-4">
+        <h3 className="eyebrow">My journey</h3>
+      </Reveal>
+      <Reveal delay={0.1} className="space-y-5 text-lg leading-relaxed text-muted lg:col-span-8 lg:columns-2 lg:gap-12 lg:space-y-0 [&>p]:break-inside-avoid lg:[&>p]:mb-5">
+        <p>
+          My journey into Information Science began with a curiosity about how technology shapes the way we
+          access, process, and share information. As a third-year student, I&apos;ve developed a deep fascination
+          with the intersection of artificial intelligence and practical software development.
+        </p>
+        <p>
+          What started as an interest in understanding data and information systems has evolved into a passion
+          for building AI-driven automation tools. I believe that the most impactful technology is the kind that
+          solves real-world problems and makes complex tasks accessible to everyone.
+        </p>
+        <p>
+          Through hands-on projects, hackathons, and continuous learning, I&apos;ve grown from understanding
+          theoretical concepts to building functional applications that serve real users. Each project teaches
+          me something new about problem-solving, user experience, and the power of well-designed systems.
+        </p>
+      </Reveal>
+    </div>
+
+    <div className="mt-28 grid gap-14 lg:grid-cols-12">
+      <Reveal className="lg:col-span-4">
+        <h3 className="eyebrow">Technical skills</h3>
+        <p className="mt-4 max-w-xs text-sm text-muted">A diverse toolkit for building modern, AI-integrated applications.</p>
+      </Reveal>
+      <div className="grid gap-12 sm:grid-cols-2 lg:col-span-8 lg:grid-cols-3">
+        {Object.entries(SKILLS).map(([category, items], c) => (
+          <Reveal key={category} delay={c * 0.08}>
+            <h4 className="border-b border-ink/10 pb-3 text-sm font-semibold">{category}</h4>
+            <ul>
+              {items.map(([name, Icon]) => (
+                <li
+                  key={name}
+                  className="group flex items-center justify-between border-b border-ink/10 py-3 text-sm transition-colors duration-300 hover:text-accent"
+                >
+                  <span className="transition-transform duration-500 ease-out-expo group-hover:translate-x-1.5">{name}</span>
+                  <Icon className="h-4 w-4 text-muted transition-colors duration-300 group-hover:text-accent" aria-hidden="true" />
+                </li>
+              ))}
+            </ul>
+          </Reveal>
+        ))}
+      </div>
+    </div>
+
+    <Reveal className="mt-28 grid gap-10 rounded-2xl bg-ink p-8 text-paper md:p-14 lg:grid-cols-12">
+      <div className="lg:col-span-5">
+        <p className="eyebrow !text-paper/60">Beyond the code</p>
+        <h3 className="mt-4 text-4xl font-bold tracking-[-0.04em] md:text-6xl">
+          Video <span className="font-serif font-normal italic text-accent">editing</span>
+        </h3>
+      </div>
+      <div className="space-y-4 leading-relaxed text-paper/70 lg:col-span-7">
+        <p>
+          Beyond my technical work in software development, I&apos;m also a passionate video editor. I believe that
+          compelling visual storytelling is just as important as writing clean code, and I enjoy bringing creative
+          visions to life through video editing.
+        </p>
+        <p>
+          From cutting and arranging footage to color grading and audio mixing, I love the entire post-production
+          process. Video editing allows me to combine my technical skills with creative expression, whether
+          it&apos;s crafting engaging content for social media, creating educational videos, or producing
+          promotional materials.
+        </p>
+        <p>
+          This creative outlet complements my development work perfectly—both require attention to detail,
+          patience, and a commitment to delivering quality results. Whether I&apos;m debugging code or perfecting a
+          transition, I approach each project with the same dedication and passion for excellence.
+        </p>
+      </div>
+    </Reveal>
+  </div>
+);
+
+export default About;

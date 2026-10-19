@@ -215,7 +215,7 @@ const PipelineCard = ({ card, index, spread, active, reduceMotion, onActivate, o
       <div
         aria-hidden="true"
         className={`absolute inset-0 rounded-xl ${
-          isVideo ? 'bg-emerald-900' : 'bg-gray-300 dark:bg-[#05071a]'
+          isVideo ? 'bg-[#7a2408]' : 'bg-neutral-300 dark:bg-black'
         }`}
         style={{ transform: `translate3d(0, 2px, ${-SLAB}px)`, boxShadow: depthShadow(card.z) }}
       />
@@ -232,11 +232,11 @@ const PipelineCard = ({ card, index, spread, active, reduceMotion, onActivate, o
       >
         <div
           aria-hidden="true"
-          className={`pointer-events-none absolute z-10 whitespace-nowrap rounded-full bg-gray-900 px-2.5 py-1 text-[11px] font-medium text-white shadow-lg transition duration-200 dark:bg-white dark:text-gray-900 ${
+          className={`pointer-events-none absolute z-10 whitespace-nowrap rounded-full bg-ink px-2.5 py-1 font-mono text-[10.5px] text-paper shadow-lg transition duration-200 ${
             isVideo ? 'bottom-full right-1 mb-2' : 'left-full top-1/2 ml-3 -translate-y-1/2'
           } ${active ? 'opacity-100' : `opacity-0 ${isVideo ? 'translate-y-1' : '-translate-x-1'}`}`}
         >
-          <span className="text-emerald-400 dark:text-emerald-600">Step {index + 1}</span> · {card.name} · {card.tool}
+          <span className="opacity-60">Step {index + 1}</span> · {card.name} · {card.tool}
         </div>
 
         <button
@@ -248,7 +248,7 @@ const PipelineCard = ({ card, index, spread, active, reduceMotion, onActivate, o
           onPointerLeave={handlePointerLeave}
           onFocus={() => onActivate(index)}
           onBlur={() => onDeactivate(index)}
-          className={`relative block h-full w-full rounded-xl text-left outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-dark-bg ${
+          className={`relative block h-full w-full rounded-xl text-left outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-paper ${
             isVideo ? 'cursor-pointer' : 'cursor-default'
           }`}
         >
@@ -264,60 +264,60 @@ const PipelineCard = ({ card, index, spread, active, reduceMotion, onActivate, o
               <span
                 ref={glowRef}
                 aria-hidden="true"
-                className="pointer-events-none absolute -inset-2 rounded-2xl opacity-0 ring-4 ring-emerald-400/60 shadow-[0_0_32px_8px_rgba(16,185,129,0.45)]"
+                className="pointer-events-none absolute -inset-2 rounded-2xl opacity-0 ring-4 ring-accent/60 shadow-[0_0_32px_8px_rgb(240_74_20/0.45)]"
               />
               <span
                 ref={pulseRef}
                 aria-hidden="true"
-                className="flex h-full w-full flex-col gap-1.5 overflow-hidden rounded-xl bg-emerald-600 p-2 text-white"
+                className="flex h-full w-full flex-col gap-1.5 overflow-hidden rounded-xl bg-accent p-2 text-black"
               >
                 <span className="flex items-center justify-between text-[11px] font-semibold">
                   <span className="flex items-center gap-1.5">
                     <Icon className="h-3 w-3" />
                     Video
                   </span>
-                  <span className="font-medium text-emerald-100">{card.tool}</span>
+                  <span className="font-mono text-[10px] text-black/70">{card.tool}</span>
                 </span>
-                <span className="relative flex flex-1 items-center justify-center rounded-md bg-gradient-to-br from-emerald-950 to-emerald-800">
-                  <span className="flex h-7 w-7 items-center justify-center rounded-full bg-white/90 text-emerald-700">
+                <span className="relative flex flex-1 items-center justify-center rounded-md bg-gradient-to-br from-neutral-800 to-black">
+                  <span className="flex h-7 w-7 items-center justify-center rounded-full bg-accent text-black">
                     <FaPlay className="ml-0.5 h-2.5 w-2.5" />
                   </span>
-                  <span className="absolute left-1.5 top-1 text-[9px] font-semibold uppercase tracking-wider text-emerald-200/80">
+                  <span className="absolute left-1.5 top-1 text-[9px] font-semibold uppercase tracking-wider text-white/50">
                     LighTube
                   </span>
                 </span>
                 <span className="flex items-center gap-1.5">
-                  <span className="relative h-1 flex-1 overflow-hidden rounded-full bg-white/25">
+                  <span className="relative h-1 flex-1 overflow-hidden rounded-full bg-black/20">
                     <span
                       ref={barRef}
-                      className="absolute inset-0 origin-left rounded-full bg-white"
+                      className="absolute inset-0 origin-left rounded-full bg-black"
                       style={{ transform: `scaleX(${reduceMotion ? 0.62 : 0})` }}
                     />
                   </span>
-                  <span className="text-[9px] tabular-nums text-emerald-100">8:42</span>
+                  <span className="font-mono text-[9px] tabular-nums text-black/70">8:42</span>
                 </span>
               </span>
             </>
           ) : (
             <span
               aria-hidden="true"
-              className="relative flex h-full w-full items-center gap-2.5 overflow-hidden rounded-xl border border-gray-200 bg-white px-3 dark:border-dark-border dark:bg-dark-card"
+              className="relative flex h-full w-full items-center gap-2.5 overflow-hidden rounded-xl border border-ink/10 bg-surface px-3"
             >
-              <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-emerald-600/10 text-emerald-600 dark:bg-emerald-400/10 dark:text-emerald-400">
+              <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-ink/[0.06] text-ink">
                 <Icon className="h-3.5 w-3.5" />
               </span>
               <span className="min-w-0">
-                <span className="block text-[13px] font-semibold leading-tight text-gray-900 dark:text-gray-100">
+                <span className="block text-[13px] font-semibold leading-tight text-ink">
                   {card.name}
                 </span>
-                <span className="block truncate text-[10.5px] leading-tight text-gray-500 dark:text-gray-400">
+                <span className="block truncate font-mono text-[10px] leading-tight text-muted">
                   {card.tool}
                 </span>
               </span>
-              <span className="absolute inset-x-0 bottom-0 h-[3px] bg-emerald-600/10 dark:bg-emerald-400/10">
+              <span className="absolute inset-x-0 bottom-0 h-[3px] bg-ink/10">
                 <span
                   ref={barRef}
-                  className="absolute inset-0 origin-left bg-emerald-500 opacity-0"
+                  className="absolute inset-0 origin-left bg-accent opacity-0"
                   style={{ transform: 'scaleX(0)' }}
                 />
               </span>
@@ -651,15 +651,15 @@ const LighTubePipeline = () => {
                 >
                   <defs>
                     <linearGradient id="lightube-path" x1="0" y1="0" x2="1" y2="1">
-                      <stop offset="0%" stopColor="#10b981" stopOpacity="0.25" />
-                      <stop offset="100%" stopColor="#10b981" stopOpacity="0.8" />
+                      <stop offset="0%" style={{ stopColor: 'rgb(var(--ink))', stopOpacity: 0.2 }} />
+                      <stop offset="100%" style={{ stopColor: 'rgb(var(--accent))', stopOpacity: 0.9 }} />
                     </linearGradient>
                   </defs>
                   <path d={PATH.d} stroke="url(#lightube-path)" strokeWidth="2.5" strokeLinecap="round" />
                   <path
                     d={PATH.d}
-                    stroke="#10b981"
-                    strokeOpacity="0.35"
+                    style={{ stroke: 'rgb(var(--ink))' }}
+                    strokeOpacity="0.25"
                     strokeWidth="1"
                     strokeDasharray="2 6"
                     transform="translate(0 4)"
@@ -672,7 +672,7 @@ const LighTubePipeline = () => {
                       ref={(el) => {
                         dotRefs.current[i] = el;
                       }}
-                      className="absolute -left-[5px] -top-[5px] h-2.5 w-2.5 rounded-full bg-emerald-300 shadow-[0_0_10px_3px_rgba(16,185,129,0.7)]"
+                      className="absolute -left-[5px] -top-[5px] h-2.5 w-2.5 rounded-full bg-accent shadow-[0_0_10px_3px_rgb(240_74_20/0.6)]"
                       style={{ transform: DOT_KEYFRAMES[0].transform }}
                     />
                   ))}

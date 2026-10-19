@@ -1,121 +1,60 @@
-import { motion } from 'framer-motion';
+import { FiArrowUp, FiArrowUpRight } from 'react-icons/fi';
 import { getSocialLinks } from '../config/socialLinks';
+import { LocalTime, Roll } from './fx';
+import { scrollToId } from '../lib/scroll';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-  const socialLinks = getSocialLinks().filter(link => ['GitHub', 'LinkedIn', 'Email'].includes(link.name));
+  const socialLinks = getSocialLinks();
 
   return (
-    <footer className="bg-gray-50 dark:bg-dark-card border-t border-gray-200 dark:border-dark-border">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="space-y-4">
-            <h3 className="text-2xl font-display font-bold text-gradient">
-              Nahom Getachew
-            </h3>
-            <p className="text-gray-600 dark:text-gray-400">
-              Information Science Student passionate about AI-driven automation and practical software development.
-            </p>
-          </div>
-
-          <div className="space-y-4">
-            <h4 className="text-lg font-semibold text-gray-900 dark:text-white">
-              Quick Links
-            </h4>
-            <ul className="space-y-2">
-              <li>
-                <button
-                  onClick={() => {
-                    const element = document.getElementById('home');
-                    if (element) window.scrollTo({ top: 0, behavior: 'smooth' });
-                  }}
-                  className="text-gray-600 dark:text-gray-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors"
-                >
-                  Home
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => {
-                    const element = document.getElementById('about');
-                    if (element) {
-                      const offset = 80;
-                      window.scrollTo({ top: element.offsetTop - offset, behavior: 'smooth' });
-                    }
-                  }}
-                  className="text-gray-600 dark:text-gray-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors"
-                >
-                  About
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => {
-                    const element = document.getElementById('projects');
-                    if (element) {
-                      const offset = 80;
-                      window.scrollTo({ top: element.offsetTop - offset, behavior: 'smooth' });
-                    }
-                  }}
-                  className="text-gray-600 dark:text-gray-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors"
-                >
-                  Projects
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => {
-                    const element = document.getElementById('contact');
-                    if (element) {
-                      const offset = 80;
-                      window.scrollTo({ top: element.offsetTop - offset, behavior: 'smooth' });
-                    }
-                  }}
-                  className="text-gray-600 dark:text-gray-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors"
-                >
-                  Contact
-                </button>
-              </li>
-            </ul>
-          </div>
-
-          <div className="space-y-4">
-            <h4 className="text-lg font-semibold text-gray-900 dark:text-white">
-              Connect With Me
-            </h4>
-            <div className="flex space-x-4">
-              {socialLinks.map((social) => (
-                <motion.a
-                  key={social.name}
-                  href={social.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ scale: 1.2, y: -2 }}
-                  whileTap={{ scale: 0.9 }}
-                  className={`text-2xl text-gray-600 dark:text-gray-400 transition-colors ${social.color}`}
-                  aria-label={social.name}
-                >
-                  {social.icon && (() => {
-                    const IconComponent = social.icon;
-                    return <IconComponent />;
-                  })()}
-                </motion.a>
-              ))}
-            </div>
-          </div>
+    <footer className="overflow-hidden border-t border-ink/10 px-4 pt-14 sm:px-6 lg:px-10">
+      <div className="grid gap-10 text-sm md:grid-cols-12">
+        <p className="max-w-xs text-muted md:col-span-4">
+          Information Science Student passionate about AI-driven automation and practical software development.
+        </p>
+        <div className="md:col-span-3">
+          <p className="eyebrow">Local time</p>
+          <p className="mt-2">
+            Addis Ababa — <LocalTime className="font-mono" />
+          </p>
         </div>
-
-        <div className="mt-12 pt-8 border-t border-gray-200 dark:border-dark-border">
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <p className="text-gray-600 dark:text-gray-400 text-sm">
-              © {currentYear} All rights reserved.
-            </p>
-          </div>
+        <ul className="space-y-2 md:col-span-3">
+          {socialLinks.map((social) => (
+            <li key={social.name}>
+              <a href={social.url} target="_blank" rel="noopener noreferrer" className="group inline-flex items-center gap-1.5">
+                <Roll>{social.name}</Roll>
+                <FiArrowUpRight className="h-3.5 w-3.5 text-muted" />
+              </a>
+            </li>
+          ))}
+        </ul>
+        <div className="md:col-span-2 md:text-right">
+          <button
+            type="button"
+            onClick={() => scrollToId('home')}
+            className="group inline-flex items-center gap-2 font-medium"
+          >
+            <Roll>Back to top</Roll>
+            <FiArrowUp className="h-4 w-4 text-accent transition-transform duration-500 ease-out-expo group-hover:-translate-y-1" />
+          </button>
         </div>
       </div>
+
+      <div className="eyebrow mt-14 flex justify-between border-t border-ink/10 py-5">
+        <span>© {currentYear} All rights reserved.</span>
+        <span>Addis Ababa, Ethiopia</span>
+      </div>
+
+      {/* Oversized wordmark, cropped by the page edge. */}
+      <p
+        aria-hidden="true"
+        className="-mb-[0.18em] select-none whitespace-nowrap text-center text-[10vw] font-bold uppercase leading-none tracking-[-0.045em] text-ink/[0.07]"
+      >
+        Nahom Getachew
+      </p>
     </footer>
   );
 };
 
 export default Footer;
-
