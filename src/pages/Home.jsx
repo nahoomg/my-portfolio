@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { FaArrowRight } from 'react-icons/fa';
+import LighTubePipeline from '../components/LighTubePipeline';
 
 const scrollToSection = (sectionId) => {
   const element = document.getElementById(sectionId);
@@ -64,14 +65,14 @@ const Home = () => {
 
   return (
     <div className="min-h-screen">
-      <section className="relative h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 overflow-hidden">
+      <section className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-24 pb-12 lg:pt-16 lg:pb-0 overflow-hidden">
         <div className="absolute inset-0 -z-10">
           <div className="absolute inset-0 bg-gradient-to-br from-emerald-600/5 to-emerald-400/5 dark:from-emerald-600/3 dark:to-emerald-400/3"></div>
           <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-600/10 rounded-full blur-3xl animate-float"></div>
           <div className="absolute bottom-0 left-0 w-96 h-96 bg-emerald-400/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }}></div>
         </div>
 
-        <div className="max-w-7xl w-full mx-auto">
+        <div className="max-w-7xl w-full mx-auto grid grid-cols-1 lg:grid-cols-[1.05fr_1fr] items-center gap-6 lg:gap-4">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -82,7 +83,7 @@ const Home = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-4xl md:text-6xl lg:text-7xl font-display font-bold mb-4"
+              className="text-4xl md:text-6xl xl:text-7xl font-display font-bold mb-4"
             >
               <span className="text-gradient">Nahom Getachew</span>
             </motion.h1>
@@ -131,6 +132,14 @@ const Home = () => {
                 Contact Me
               </motion.button>
             </motion.div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 0.4 }}
+          >
+            <LighTubePipeline />
           </motion.div>
         </div>
       </section>

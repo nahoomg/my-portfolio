@@ -62,6 +62,7 @@ const Projects = () => {
         'Real-time job tracking with downloadable assets',
         'Modern Next.js dashboard with shadcn/ui components',
       ],
+      anchor: 'project-lightube',
       github: 'https://github.com/nahoomg/youtube-automation-script.git',
       demo: 'https://lightube.vercel.app',
       youtubeVideo: '',
@@ -176,8 +177,10 @@ const Projects = () => {
             {projects.map((project, index) => (
               <motion.div
                 key={project.id}
+                id={project.anchor}
+                tabIndex={project.anchor ? -1 : undefined}
                 variants={itemVariants}
-                className={`flex flex-col ${
+                className={`outline-none flex flex-col ${
                   index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'
                 } gap-6 items-center relative z-10`}
               >
