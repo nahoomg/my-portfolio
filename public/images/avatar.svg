@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" role="img" aria-label="Cartoon avatar placeholder">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2a2a2a"/>
+      <stop offset="1" stop-color="#0d0d0d"/>
+    </linearGradient>
+    <clipPath id="circle"><circle cx="120" cy="120" r="120"/></clipPath>
+  </defs>
+  <g>
+    <rect width="240" height="240" fill="url(#bg)"/>
+    <circle cx="190" cy="48" r="34" fill="#ffffff" opacity="0.12"/>
+    <circle cx="40" cy="200" r="46" fill="#ffffff" opacity="0.08"/>
+
+    <!-- shirt -->
+    <path d="M38 240c4-46 38-70 82-70s78 24 82 70z" fill="#e9e8e4"/>
+    <path d="M100 172l20 24 20-24" fill="none" stroke="#f04a14" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- neck -->
+    <path d="M104 146h32v30c0 9-7 14-16 14s-16-5-16-14z" fill="#8a5a3c"/>
+
+    <!-- ears -->
+    <ellipse cx="72" cy="112" rx="10" ry="14" fill="#9b6646"/>
+    <ellipse cx="168" cy="112" rx="10" ry="14" fill="#9b6646"/>
+
+    <!-- head -->
+    <ellipse cx="120" cy="108" rx="48" ry="54" fill="#a8704e"/>
+
+    <!-- hair -->
+    <path d="M70 102c-4-38 22-62 52-62 32 0 54 22 50 60-8-14-20-22-34-24-18 8-44 10-68 26z" fill="#1c1917"/>
+
+    <!-- brows -->
+    <path d="M90 96q10-6 20 0" fill="none" stroke="#1c1917" stroke-width="5" stroke-linecap="round"/>
+    <path d="M130 96q10-6 20 0" fill="none" stroke="#1c1917" stroke-width="5" stroke-linecap="round"/>
+
+    <!-- eyes -->
+    <ellipse cx="100" cy="112" rx="6" ry="7" fill="#1c1917"/>
+    <ellipse cx="140" cy="112" rx="6" ry="7" fill="#1c1917"/>
+    <circle cx="102" cy="109" r="2" fill="#ffffff"/>
+    <circle cx="142" cy="109" r="2" fill="#ffffff"/>
+
+    <!-- cheeks -->
+    <ellipse cx="88" cy="130" rx="8" ry="5" fill="#e07a5f" opacity="0.35"/>
+    <ellipse cx="152" cy="130" rx="8" ry="5" fill="#e07a5f" opacity="0.35"/>
+
+    <!-- nose and smile -->
+    <path d="M120 114q-4 12 2 16" fill="none" stroke="#7c4a2d" stroke-width="3.5" stroke-linecap="round"/>
+    <path d="M102 138q18 16 36 0" fill="#ffffff" stroke="#1c1917" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

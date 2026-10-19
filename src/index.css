@@ -3,42 +3,97 @@
 @tailwind utilities;
 
 @layer base {
+  /* Light: off-white paper, near-black ink. Swap --accent to re-brand. */
+  :root {
+    --paper: 244 243 239;
+    --surface: 255 255 255;
+    --ink: 12 12 12;
+    --muted: 104 104 100;
+    --accent: 240 74 20;
+    color-scheme: light;
+  }
+
+  .dark {
+    --paper: 10 10 10;
+    --surface: 21 21 21;
+    --ink: 240 239 235;
+    --muted: 145 145 140;
+    color-scheme: dark;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
   body {
-    @apply bg-white dark:bg-dark-bg text-gray-900 dark:text-gray-100 transition-colors duration-300;
+    @apply bg-paper text-ink font-sans antialiased transition-colors duration-500;
+    font-feature-settings: 'ss01', 'cv11';
+  }
+
+  ::selection {
+    @apply bg-accent text-black;
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-accent ring-offset-2 ring-offset-paper;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
   }
 }
 
-@layer utilities {
-  .text-gradient {
-    @apply text-emerald-600 dark:text-emerald-400;
+@layer components {
+  /* "(01) Label" mono eyebrow used above every section. */
+  .eyebrow {
+    @apply font-mono text-[11px] uppercase tracking-[0.18em] text-muted;
   }
-  
-  .bg-gradient-accent {
-    @apply bg-emerald-600;
+
+  .hairline {
+    @apply border-ink/10;
   }
-  
-  .card-hover {
-    @apply transition-all duration-300 hover:scale-105 hover:shadow-2xl;
+
+  .text-outline {
+    color: transparent;
+    -webkit-text-stroke: 1px rgb(var(--ink) / 0.55);
   }
-  
+
+  /* Hover "roll": two stacked copies of a label slide up together. */
+  .roll {
+    @apply relative inline-flex overflow-hidden;
+  }
+  .roll > span {
+    @apply block transition-transform duration-500 ease-out-expo;
+  }
+  .roll > span + span {
+    @apply absolute inset-x-0 top-full;
+  }
+  .group:hover .roll > span,
+  .group:focus-visible .roll > span {
+    transform: translateY(-100%);
+  }
 }
 
-html {
-  scroll-behavior: smooth;
+/* Static film grain; painted once, never animated. */
+.grain {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
+
 ::-webkit-scrollbar {
   width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-gray-100 dark:bg-dark-bg;
+  @apply bg-paper;
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-gray-400 dark:bg-dark-border rounded-full;
+  @apply rounded-full bg-ink/20;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-gray-500 dark:bg-gray-600;
+  @apply bg-ink/40;
 }
-

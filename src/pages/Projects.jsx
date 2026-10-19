@@ -1,6 +1,25 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaGithub, FaExternalLinkAlt, FaCalendar, FaCheckCircle, FaClock, FaPlay, FaTimes } from 'react-icons/fa';
+import { FiArrowUpRight, FiGithub, FiPlay, FiX } from 'react-icons/fi';
+import { EASE_OUT, Reveal, Roll, SectionLabel } from '../components/fx';
+import { projects } from '../data/projects';
+
+const hasLink = (url) => url && url !== '#';
+
+// Screenshot in a frame: monochrome until hovered.
+const Shot = ({ src, alt }) => (
+  <div className="group relative aspect-[16/10] overflow-hidden rounded-2xl bg-surface ring-1 ring-ink/10">
+    <img
+      src={src}
+      alt={alt}
+      loading="lazy"
+      className="h-full w-full object-cover object-top grayscale transition duration-700 ease-out-expo group-hover:scale-[1.03] group-hover:grayscale-0"
+      onError={(e) => {
+        e.target.style.display = 'none';
+      }}
+    />
+  </div>
+);
 
 const Projects = () => {
   const [selectedVideo, setSelectedVideo] = useState(null);
@@ -41,318 +60,151 @@ const Projects = () => {
     };
   }, [selectedVideo]);
 
-  const projects = [
-    {
-      id: 1,
-      title: 'AI YouTube Automation Platform',
-      status: 'In Progress',
-      statusColor: 'bg-yellow-500',
-      date: 'December 2025 - Present',
-      description: 'A cutting-edge, full-stack web application designed to automate the entire YouTube video creation pipeline using advanced AI models. From topic research to final video assembly.',
-      longDescription: 'This platform empowers content creators to generate high-quality, engaging videos with minimal manual effort. It features multi-channel project management, AI-powered content generation using Google\'s Gemini models for topic research, scriptwriting, and production planning. Integrates Stability AI for visual asset creation including thumbnails and scene-by-scene images. Utilizes Gemini\'s Text-to-Speech for natural voiceovers and FFmpeg for automated video assembly. Built with Next.js (TypeScript, Tailwind CSS, shadcn/ui) and Firestore for robust backend storage.',
-      image: '/images/ai-youtube-automation.png',
-      tags: ['Next.js', 'TypeScript', 'Gemini AI', 'Stability AI', 'FFmpeg', 'Firestore', 'Automation'],
-      features: [
-        'Multi-channel project management with customizable settings',
-        'AI-powered scriptwriting with multiple persona options',
-        'Automated thumbnail and scene image generation',
-        'Professional Text-to-Speech voiceovers with Gemini TTS',
-        'Complete video assembly with subtitles using FFmpeg',
-        'SEO-optimized titles, descriptions, and tags generation',
-        'Real-time job tracking with downloadable assets',
-        'Modern Next.js dashboard with shadcn/ui components',
-      ],
-      github: 'https://github.com/nahoomg/youtube-automation-script.git',
-      demo: 'https://lightube.vercel.app',
-      youtubeVideo: '',
-    },
-    {
-      id: 2,
-      title: 'CineReview - Movie Review Platform',
-      status: 'Completed',
-      statusColor: 'bg-green-500',
-      date: '2024',
-      description: 'A full-stack movie review platform where users can discover movies, read reviews, and share their thoughts. Built with Django REST Framework and React, featuring authentication, image uploads, and a responsive UI.',
-      longDescription: 'CineReview is a full-stack web application that enables movie enthusiasts to explore films, write reviews, and manage their review history. The platform features token-based authentication, movie browsing with search and genre filters, a comprehensive review system with ratings and comments, user profiles with avatar uploads, and a responsive design with modern UI/UX.',
-      image: '/images/movie-review.png',
-      tags: ['Django', 'Django REST Framework', 'React', 'Vite', 'Tailwind CSS', 'SQLite', 'Full-Stack'],
-      features: [
-        'RESTful API with Django REST Framework',
-        'React frontend with Context API for state management',
-        'Token-based authentication system',
-        'Movie browsing with search and genre filters',
-        'Review system with ratings and comments',
-        'User profiles with avatar uploads',
-        'Image upload and management',
-        'Protected routes and secure authentication',
-        'Responsive design for all devices',
-      ],
-      github: 'https://github.com/nahoomg/movie-review-api.git',
-      demo: 'https://movie-review-api-omega.vercel.app/',
-      youtubeVideo: '',
-    },
-    {
-      id: 3,
-      title: 'Arifpay Hackathon — Telegram E-Commerce Bot',
-      status: 'Completed',
-      statusColor: 'bg-green-500',
-      date: 'October 2025',
-      description: 'A fully functional e-commerce Telegram bot built for the Arifpay hackathon. It supports product browsing, order placement, and payment integration within the Telegram ecosystem.',
-      longDescription: 'Developed during the Arifpay hackathon, this Telegram bot provides a complete e-commerce experience within the messaging platform. Users can browse products, view details, add items to cart, and complete purchases using integrated payment solutions. The bot features an intuitive conversation flow, persistent cart management, and real-time order tracking.',
-      image: '/images/Suq-et-ecommerce.png',
-      tags: ['Telegram Bot', 'API Integration', 'E-Commerce', 'Hackathon', 'Python', 'Rapid Prototyping'],
-      features: [
-        'Product catalog browsing',
-        'Shopping cart management',
-        'Payment gateway integration',
-        'Order tracking system',
-        'Admin dashboard for product management',
-      ],
-      github: '#',
-      demo: '#',
-      youtubeVideo: '',
-    },
-  ];
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.15,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-      },
-    },
-  };
-
   return (
-    <div className="min-h-screen">
-      <section className="py-10 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-emerald-600/5 to-emerald-400/5 dark:from-emerald-600/3 dark:to-emerald-400/3">
-        <div className="max-w-6xl mx-auto text-center">
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-2xl md:text-3xl font-display font-bold mb-3"
-          >
-            My <span className="text-gradient">Projects</span>
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-sm text-gray-600 dark:text-gray-400 max-w-xl mx-auto"
-          >
-            A showcase of my work in AI automation, mobile development, and innovative solutions
-          </motion.p>
-        </div>
-      </section>
+    <div className="px-4 py-24 sm:px-6 md:py-36 lg:px-10">
+      <SectionLabel index="04">Case studies</SectionLabel>
+      <Reveal as="h2" className="mt-14 text-5xl font-bold tracking-[-0.05em] md:text-8xl">
+        The <span className="font-serif font-normal italic">details</span>
+      </Reveal>
 
-      <section className="py-10 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-6xl mx-auto relative">
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="space-y-10 relative"
+      <div className="mt-20 space-y-32 md:space-y-44">
+        {projects.map((project, index) => (
+          <article
+            key={project.id}
+            id={project.anchor}
+            tabIndex={-1}
+            aria-labelledby={`${project.anchor}-title`}
+            className="grid gap-10 outline-none lg:grid-cols-12 lg:gap-16"
           >
-            {/* Connecting Line - Vertical line in the middle */}
-            <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-0.5 -translate-x-1/2 z-0">
-              <div className="absolute inset-0 bg-gradient-to-b from-emerald-600/20 via-emerald-500/30 to-emerald-600/20"></div>
-              <div className="absolute inset-0 bg-gradient-to-b from-transparent via-emerald-400/10 to-transparent" style={{ animation: 'pulse 3s ease-in-out infinite' }}></div>
-            </div>
+            <Reveal className={`lg:col-span-7 ${index % 2 ? 'lg:order-2' : ''}`}>
+              <Shot src={project.image} alt={project.title} />
+            </Reveal>
 
-            {projects.map((project, index) => (
-              <motion.div
-                key={project.id}
-                variants={itemVariants}
-                className={`flex flex-col ${
-                  index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'
-                } gap-6 items-center relative z-10`}
-              >
-                {/* Connection Node */}
-                <div className="hidden lg:block absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20">
-                  <motion.div
-                    initial={{ scale: 0, opacity: 0 }}
-                    whileInView={{ scale: 1, opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.2, duration: 0.4 }}
-                    className="w-5 h-5 rounded-full bg-emerald-600 dark:bg-emerald-400 border-4 border-white dark:border-dark-bg shadow-xl"
+            <Reveal delay={0.1} className="lg:col-span-5">
+              <div className="eyebrow flex flex-wrap items-center gap-x-4 gap-y-1">
+                <span className="text-ink">{String(index + 1).padStart(2, '0')}</span>
+                <span className="flex items-center gap-1.5">
+                  <span
+                    className={`h-1.5 w-1.5 rounded-full ${project.status === 'Completed' ? 'bg-ink/40' : 'bg-accent'}`}
+                    aria-hidden="true"
+                  />
+                  {project.status}
+                </span>
+                <span>{project.date}</span>
+              </div>
+
+              <h3 id={`${project.anchor}-title`} className="mt-5 text-3xl font-bold leading-[1.05] tracking-[-0.04em] md:text-5xl">
+                {project.title}
+              </h3>
+
+              <p className="mt-6 leading-relaxed text-muted">{project.longDescription}</p>
+
+              <h4 className="eyebrow mt-10">Key features</h4>
+              <ul className="mt-3 border-t border-ink/10 text-sm">
+                {project.features.map((feature) => (
+                  <li key={feature} className="flex gap-3 border-b border-ink/10 py-2.5">
+                    <span className="text-accent" aria-hidden="true">
+                      ✳
+                    </span>
+                    <span>{feature}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <ul className="mt-6 flex flex-wrap gap-2" aria-label="Technologies">
+                {project.tags.map((tag) => (
+                  <li key={tag} className="rounded-full border border-ink/15 px-3 py-1 font-mono text-[11px] text-muted">
+                    {tag}
+                  </li>
+                ))}
+              </ul>
+
+              <div className="mt-10 flex flex-wrap items-center gap-3">
+                {hasLink(project.demo) && (
+                  <a
+                    href={project.demo}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-semibold text-black"
                   >
-                    <div className="absolute inset-0 rounded-full bg-emerald-400/30 animate-ping"></div>
-                  </motion.div>
-                </div>
-                <div className="w-full lg:w-1/2">
-                  <motion.div
-                    whileHover={{ scale: 1.02 }}
-                    className={`relative rounded-2xl overflow-hidden shadow-2xl group ${project.id === 1 ? '-mt-8' : ''}`}
+                    <Roll>Live demo</Roll>
+                    <FiArrowUpRight className="h-4 w-4" />
+                  </a>
+                )}
+                {hasLink(project.github) && (
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group inline-flex items-center gap-2 rounded-full border border-ink/20 px-6 py-3 text-sm font-semibold transition-colors duration-300 hover:border-ink"
                   >
-                    <div className="aspect-video bg-gradient-to-br from-emerald-600/20 to-emerald-400/20 relative">
-                      <img
-                        src={project.image}
-                        alt={project.title}
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                        loading="lazy"
-                        onError={(e) => {
-                          e.target.style.display = 'none';
-                        }}
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent pointer-events-none"></div>
-                    </div>
-
-                    <div className="absolute top-4 left-4">
-                      <span className={`${project.statusColor} text-white px-4 py-2 rounded-full text-sm font-semibold flex items-center space-x-2 shadow-lg`}>
-                        {project.status === 'Completed' ? (
-                          <FaCheckCircle />
-                        ) : (
-                          <FaClock />
-                        )}
-                        <span>{project.status}</span>
-                      </span>
-                    </div>
-                  </motion.div>
-                </div>
-
-                <div className="w-full lg:w-1/2 space-y-4">
-                  <div>
-                    <h2 className="text-xl md:text-2xl font-display font-bold mb-2 text-gray-900 dark:text-white">
-                      {project.title}
-                    </h2>
-                    <div className="flex items-center space-x-2 text-gray-600 dark:text-gray-400 mb-2 text-sm">
-                      <FaCalendar />
-                      <span>{project.date}</span>
-                    </div>
-                  </div>
-
-                  <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
-                    {project.longDescription}
-                  </p>
-
-                  <div>
-                    <h3 className="text-base font-bold mb-2 text-gray-900 dark:text-white">
-                      Key Features
-                    </h3>
-                    <ul className="space-y-2">
-                      {project.features.map((feature, idx) => (
-                        <li
-                          key={idx}
-                          className="flex items-start space-x-2 text-gray-700 dark:text-gray-300"
-                        >
-                          <span className="text-emerald-600 mt-1">▹</span>
-                          <span>{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  <div className="flex flex-wrap gap-2">
-                    {project.tags.map((tag, idx) => (
-                      <span
-                        key={idx}
-                        className="px-2 py-1 text-xs rounded-full bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 border border-gray-200 dark:border-gray-600"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-
-                  <div className="flex flex-wrap gap-3 pt-3">
-                    <motion.a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="flex items-center space-x-2 px-5 py-2.5 bg-gray-800 dark:bg-gray-700 text-white rounded-lg font-semibold hover:bg-gray-700 dark:hover:bg-gray-600 hover:shadow-lg transition-all text-sm"
-                    >
-                      <FaGithub />
-                      <span>View Code</span>
-                    </motion.a>
-                    <motion.a
-                      href={project.demo}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="flex items-center space-x-2 px-5 py-2.5 border-2 border-emerald-600 text-emerald-600 dark:text-emerald-400 dark:border-emerald-400 rounded-lg font-semibold hover:bg-emerald-600 hover:text-white transition-all text-sm"
-                    >
-                      <FaExternalLinkAlt />
-                      <span>Live Demo</span>
-                    </motion.a>
-                    <motion.button
-                      onClick={() => project.youtubeVideo ? openVideoModal(project.youtubeVideo) : null}
-                      disabled={!project.youtubeVideo}
-                      whileHover={project.youtubeVideo ? { scale: 1.05 } : {}}
-                      whileTap={project.youtubeVideo ? { scale: 0.95 } : {}}
-                      className={`flex items-center space-x-2 px-5 py-2.5 rounded-lg font-semibold transition-all shadow-lg text-sm ${
-                        project.youtubeVideo
-                          ? 'bg-red-600 text-white hover:bg-red-700 hover:shadow-xl cursor-pointer'
-                          : 'bg-gray-400 dark:bg-gray-600 text-white cursor-not-allowed opacity-75'
-                      }`}
-                    >
-                      <FaPlay />
-                      <span>{project.youtubeVideo ? 'Watch Demo' : 'Demo video will be added soon'}</span>
-                    </motion.button>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
+                    <FiGithub className="h-4 w-4" />
+                    <Roll>Source</Roll>
+                  </a>
+                )}
+                {project.youtubeVideo ? (
+                  <button
+                    type="button"
+                    onClick={() => openVideoModal(project.youtubeVideo)}
+                    className="group inline-flex items-center gap-2 rounded-full border border-ink/20 px-6 py-3 text-sm font-semibold transition-colors duration-300 hover:border-ink"
+                  >
+                    <FiPlay className="h-4 w-4" />
+                    <Roll>Watch demo</Roll>
+                  </button>
+                ) : (
+                  <span className="eyebrow px-2">Demo video soon</span>
+                )}
+              </div>
+            </Reveal>
+          </article>
+        ))}
+      </div>
 
       <AnimatePresence>
         {selectedVideo && (
           <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={closeVideoModal}
-              className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={closeVideoModal}
+            className="fixed inset-0 z-[70] flex items-center justify-center bg-black/90 p-4"
+          >
+            <motion.div
+              role="dialog"
+              aria-modal="true"
+              aria-label="Project demo video"
+              initial={{ scale: 0.92, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.92, opacity: 0 }}
+              transition={{ duration: 0.5, ease: EASE_OUT }}
+              onClick={(e) => e.stopPropagation()}
+              className="relative w-full max-w-5xl overflow-hidden rounded-2xl bg-black"
             >
-              <motion.div
-                initial={{ scale: 0.8, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                exit={{ scale: 0.8, opacity: 0 }}
-                onClick={(e) => e.stopPropagation()}
-                className="relative w-full max-w-4xl bg-white dark:bg-dark-card rounded-2xl overflow-hidden shadow-2xl"
+              <button
+                onClick={closeVideoModal}
+                className="absolute right-4 top-4 z-10 rounded-full bg-white/10 p-2 text-white transition-colors hover:bg-white/20"
+                aria-label="Close video"
               >
-                <button
-                  onClick={closeVideoModal}
-                  className="absolute top-4 right-4 z-10 p-2 bg-black/50 hover:bg-black/70 text-white rounded-full transition-colors"
-                  aria-label="Close video"
-                >
-                  <FaTimes className="w-5 h-5" />
-                </button>
-                <div className="aspect-video">
-                  {getYouTubeEmbedUrl(selectedVideo) ? (
-                    <iframe
-                      src={getYouTubeEmbedUrl(selectedVideo)}
-                      title="YouTube video player"
-                      frameBorder="0"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowFullScreen
-                      className="w-full h-full"
-                    />
-                  ) : (
-                    <div className="w-full h-full flex items-center justify-center bg-gray-900 text-white">
-                      <p>Invalid YouTube URL</p>
-                    </div>
-                  )}
-                </div>
-              </motion.div>
+                <FiX className="h-5 w-5" />
+              </button>
+              <div className="aspect-video">
+                {getYouTubeEmbedUrl(selectedVideo) ? (
+                  <iframe
+                    src={getYouTubeEmbedUrl(selectedVideo)}
+                    title="YouTube video player"
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    className="h-full w-full"
+                  />
+                ) : (
+                  <div className="flex h-full w-full items-center justify-center text-white">
+                    <p>Invalid YouTube URL</p>
+                  </div>
+                )}
+              </div>
             </motion.div>
+          </motion.div>
         )}
       </AnimatePresence>
     </div>
@@ -360,4 +212,3 @@ const Projects = () => {
 };
 
 export default Projects;
-
